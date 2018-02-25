@@ -46,4 +46,10 @@ class DummyManager extends AbstractContentManager
     {
         return new DummyResponse();
     }
+	
+	/** @return string */
+	static function Type()
+	{
+		return 'dummy';
+	}
 }

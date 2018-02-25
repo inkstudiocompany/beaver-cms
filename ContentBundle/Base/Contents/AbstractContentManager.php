@@ -168,13 +168,10 @@ abstract class AbstractContentManager
     }
 
     /** @return string */
-    static function Type()
-    {
-        return self::TYPE;
-    }
+    abstract static function Type();
 	
 	/**
 	 * @return \Beaver\CoreBundle\Response\BaseResponse
 	 */
-	public function getResponse();
+	abstract public function getResponse();
 }
