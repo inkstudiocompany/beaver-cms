@@ -18,7 +18,7 @@ var gulp        = require('gulp'),
  * Destino de los archivos.
  * @type {string}
  */
-var dest = '../public/bundles/beaver/backend/css';
+var dest = '../public/bundles/beaver/css';
 
 /**
  * Lista de dependencias

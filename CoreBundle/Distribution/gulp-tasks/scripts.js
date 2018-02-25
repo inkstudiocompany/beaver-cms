@@ -20,7 +20,7 @@ var minify = composer(uglifyjs, console);
  * Destino de los archivos.
  * @type {string}
  */
-var dest = '../public/bundles/beaver/backend/js';
+var dest = '../public/bundles/beaver/js';
 
 /**
  * Lista de dependencias
