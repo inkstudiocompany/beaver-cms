@@ -1,0 +1,6 @@
+beaver_core:
+    contents:
+        - { type: banner, name: Banner, manager: \Beaver\ContentBundle\Contents\Banner\BannerManager }
+        - { type: dummy, name: 'Dummy content', manager: \Beaver\ContentBundle\Contents\Dummy\DummyManager }
+
+    layouts: '%layouts%'

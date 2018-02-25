@@ -1,0 +1,47 @@
+beaver.ajax.blocks.form:
+    path:       /blocks
+    methods:    [GET]
+    controller: Beaver\BackendBundle\Controller\Rest\BlockController::form
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.blocks.save:
+    path:       /blocks
+    methods:    [POST]
+    controller: Beaver\BackendBundle\Controller\Rest\BlockController::save
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.blocks.get:
+    path:       /blocks/{id}
+    methods:    [GET]
+    controller: Beaver\BackendBundle\Controller\Rest\BlockController::block
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.backend.ajax.block.move:
+    path:       /blocks/{id}/move/{blockToReplace}
+    methods:    [PUT]
+    controller: Beaver\BackendBundle\Controller\Rest\BlockController::move
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.blocks.publish:
+    path:       /blocks/{id}/publish
+    methods:    [PUT]
+    controller: Beaver\BackendBundle\Controller\Rest\BlockController::publish
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.blocks.drop:
+    path:       /blocks/{id}
+    methods:    [DELETE]
+    controller: Beaver\BackendBundle\Controller\Rest\BlockController::drop
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true

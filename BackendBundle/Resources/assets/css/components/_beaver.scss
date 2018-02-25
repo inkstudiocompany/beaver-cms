@@ -1,0 +1,53 @@
+* {
+    outline: none !important;
+}
+
+.beaver-container
+{
+    width: 95vw;
+    margin: 10px auto 10px auto;
+    margin-left: 55px;
+
+    h3{
+        margin-bottom: 20px;
+        border-bottom: 1px solid $primaryColor;
+        padding-bottom: 10px;
+        color: $primaryColor;
+        font-family: $font-family;
+    }
+
+    .bg-component
+    {
+        font-family: $font-family;
+    }
+
+    .table {
+        font-family: $font-family;
+
+        thead {
+            border: 1px solid $primaryColor;
+            background: $primaryColor;
+            color: $primaryContrastColor;
+        }
+        tbody {
+            border: 1px solid #dee2e6;
+        }
+    }
+}
+
+.beaver-mockup
+{
+    display: none;
+}
+
+.published {
+    background-color: $published-color !important;
+}
+
+.unpublished {
+    background-color: $unpublished-color !important;
+}
+
+.ui.dimmer.active {
+    z-index:999;
+}

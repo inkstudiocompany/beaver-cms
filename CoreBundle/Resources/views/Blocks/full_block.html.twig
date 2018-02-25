@@ -1,0 +1,8 @@
+{% extends Bundle ~ '/Layouts/Blocks/block_base.html.twig' %}
+{% import Bundle ~ '/Macros/widget.html.twig' as widgetMacro %}
+
+{% block blockColumns %}
+    <div class="col-md-12" data-beaver="slot" data-id="1" data-size="12">
+        {{ widgetMacro.render(block, 1) }}
+    </div>
+{% endblock blockColumns %}

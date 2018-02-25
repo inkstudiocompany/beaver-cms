@@ -1,0 +1,17 @@
+<div class="slot-admin-buttons area">
+    {% if widgets is empty %}
+    <a class="slot-action-button" data-rel="add-widget" title="Add Widget">
+        <i class="fas fa-cube"></i>
+        Add Widget
+    </a>
+    {% endif %}
+
+    {% if widgets is not empty %}
+        {% set widget = widgets | first %}
+        <a class="slot-action-button" data-rel="drop-widget" title="Add Widget" data-id="{{ widget.id }}">
+            <i class="fas fa-trash"></i>
+            Delete Widget
+        </a>
+    {% endif %}
+
+</div>

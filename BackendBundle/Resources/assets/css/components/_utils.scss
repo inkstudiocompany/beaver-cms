@@ -1,0 +1,15 @@
+#line-progress {
+  height: 4px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+  z-index: 99999;
+
+  svg{
+    position: absolute;
+    top: 0px;
+  }
+}

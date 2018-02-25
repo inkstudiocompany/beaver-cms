@@ -1,0 +1,19 @@
+{% macro render(form) %}
+    {% block backend_scripts %}
+        {{ parent() }}
+        <script type="text/javascript">
+            console.log('esto funciona! :)');
+        </script>
+    {% endblock backend_scripts %}
+
+    {{ form_start(form, { 'id': form.vars.id, 'attr': {'class': 'ui form'} }) }}
+        {% for key, input in form.iterator %}
+            {% if key != '_token' %}
+                <div class="inline fields">
+                    {{ form_label(input) }}
+                    {{ form_widget(input) }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {{ form_end(form) }}
+{% endmacro %}

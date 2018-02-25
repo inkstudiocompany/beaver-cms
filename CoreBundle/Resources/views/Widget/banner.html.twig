@@ -1,0 +1,6 @@
+{% if widget.data %}
+<div class="something">
+    <h1>My first widget</h1>
+    {{ widget.data['attribute'] | raw }}
+</div>
+{% endif %}

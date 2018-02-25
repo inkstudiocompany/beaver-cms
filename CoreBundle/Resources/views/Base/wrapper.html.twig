@@ -1,0 +1,26 @@
+{#{% spaceless %}#}
+<!DOCTYPE html>
+<html {% block html_attributes %}{% endblock html_attributes %}>
+    <head>
+        <title>{% block pagetitle %}{% endblock pagetitle %}</title>
+
+        {%  block meta_tags %}{%  endblock meta_tags %}
+
+        {% include '@Core/Base/header-styles.html.twig' %}
+
+        {% block styles %}{% endblock styles %}
+
+        {% block javascript %}{% endblock javascript %}
+    </head>
+
+    <body>
+        {% block backend_navbar %}{% endblock backend_navbar %}
+
+        {% block body %}{% endblock body %}
+
+        {% block admin_containers %}{% endblock admin_containers %}
+    </body>
+
+    {% block backend_scripts %}{% endblock backend_scripts %}
+</html>
+{#{% endspaceless %}#}

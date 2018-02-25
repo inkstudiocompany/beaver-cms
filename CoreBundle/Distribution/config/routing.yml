@@ -1,0 +1,11 @@
+backend:
+    resource: "@BeaverBackendBundle/Resources/config/routing.yml"
+    prefix:   /backend
+
+core:
+    resource: "@BeaverCoreBundle/Resources/config/routing.yml"
+    prefix: /
+
+contents:
+    resource: "@BeaverContentBundle/Resources/config/routing.yml"
+    prefix:   /

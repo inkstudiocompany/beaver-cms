@@ -1,0 +1,3 @@
+beaver_content_homepage:
+    path:     /
+    defaults: { _controller: BeaverContentBundle:Default:index }

@@ -1,0 +1,14 @@
+backend.page:
+    prefix: /ajax
+    resource: 'routes/page.ajax.yml'
+
+backend.block:
+    prefix: /ajax
+    resource: 'routes/block.ajax.yml'
+
+backend.widgets:
+    prefix: /ajax
+    resource: 'routes/widget.ajax.yml'
+
+backend:
+    resource: 'routes/routing.yml'

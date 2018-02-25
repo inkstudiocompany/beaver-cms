@@ -1,0 +1,7 @@
+{% extends '@Backend/Forms/form-base.html.twig' %}
+
+{% block form %}
+    <h1 class="ui header">New Page</h1>
+
+    {% embed '@Backend/Embed/form.html.twig' with { 'form' : form } %}{% endembed %}
+{% endblock form %}

@@ -1,0 +1,9 @@
+{% macro render(block, slot) %}
+    {% set widgets = block.slot(slot) %}
+    {% include '@Backend/Admin/bars/slot-admin-bar.html.twig' %}
+
+    {% if widgets %}
+        {% set widget = widgets | first %}
+        {% include widget.view %}
+    {% endif %}
+{% endmacro %}

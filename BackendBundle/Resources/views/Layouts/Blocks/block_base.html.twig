@@ -1,0 +1,4 @@
+<div class="row block{% block blockClass %}{% endblock blockClass %}" id="block-{{ block.id }}" data-id="{{ block.id }}" data-order="{{ block.order }}" data-status="{% if block.published == true %}1{% else %}0{% endif %}" data-beaver="block">
+    {% block blockColumns %}
+    {% endblock blockColumns %}
+</div>

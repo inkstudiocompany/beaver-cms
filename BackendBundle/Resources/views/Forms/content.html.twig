@@ -1,0 +1,38 @@
+{% extends '@Backend/Forms/form-base.html.twig' %}
+
+{% block custom_styles %}
+
+{% endblock custom_styles %}
+
+{% block form %}
+    <h3>
+        {{ type | capitalize }}
+        <a class="btn btn-outline-warning btn-sm float-right" href="{{ path('beaver.backend.contents', {'content':type}) }}">
+            Volver <i class="fas fa-undo"></i>
+        </a>
+    </h3>
+
+
+
+    {% if message is defined %}
+        <label>{{ message }}</label>
+    {% endif %}
+
+    {% embed '@Backend/Embed/form.html.twig' with { 'form' : form } %}{% endembed %}
+{% endblock form %}
+
+{% block custom_javascript %}
+    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.1/classic/ckeditor.js"></script>
+    <script>
+        $(function () {
+            ClassicEditor
+                .create( document.querySelector( '.editor' ), {
+                    size: {width: '10%'},
+                    toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
+                })
+                .catch(error => {
+                    console.error( error );
+                });
+        });
+    </script>
+{% endblock custom_javascript %}

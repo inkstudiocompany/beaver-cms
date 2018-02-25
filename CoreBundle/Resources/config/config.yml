@@ -1,0 +1,8 @@
+imports:
+    - { resource: '@BeaverBackendBundle/Resources/config/services.yml' }
+    - { resource: '@BeaverCoreBundle/Resources/config/services.yml' }
+
+#beaver:
+#    layouts:  '%page.layouts%'
+#    contents: '%contents%'
+#    blocks:   '%beaver_blocks_directory%'

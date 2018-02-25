@@ -1,0 +1,89 @@
+.card.layout-item
+{
+    width: 150px !important;
+}
+
+.backend-form
+{
+    position: relative;
+    width: 100%;
+    padding: 30px;
+    background: $white;
+
+    .form-group
+    {
+      label
+      {
+        position: relative;
+        float: left;
+        width: 30%;
+        font-weight: bolder;
+      }
+        /*margin-bottom: 5px;
+        display: block;
+        overflow: auto;
+
+        label
+        {
+            position: relative;
+            float: left;
+            width: 30%;
+            font-weight: bolder;
+        }
+
+        select,
+        input[type="text"]
+        {
+            height: 30px;
+            position: relative;
+            float: left;
+            width: 65%;
+            margin-left: 5%;
+        }
+
+        textarea.editor {
+            height: 250px !important;
+        } */
+
+        .ck-editor__editable {
+            min-height: 400px;
+            border: 1px solid $primaryColor;
+            box-shadow: none;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+        }
+        .ck-editor__top .ck-sticky-panel .ck-toolbar {
+            border: none;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            background: #2d3436;
+            margin-bottom: 5px;
+        }
+        .ck-button{
+            -webkit-border-radius: 4px !important;
+            border-radius: 4px !important;
+            cursor: pointer;
+            color: $primaryColor;
+        }
+    }
+
+    /*
+    .button {
+        @include border-radius;
+        border: none;
+        padding: 5px 15px;
+        float: right;
+        margin-left: 5px;
+        color: $white-color;
+        background-color: $black-color;
+
+        &.green {
+            background: $published-color;
+        }
+
+        &.red {
+            background: $unpublished-color;
+        }
+    }
+    */
+}

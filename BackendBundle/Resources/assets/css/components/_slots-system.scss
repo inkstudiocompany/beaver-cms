@@ -1,0 +1,50 @@
+div[data-beaver="slot"]
+{
+    min-height: 100px;
+
+    &:hover {
+        .slot-admin-buttons
+        {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+        background: $silver-color;
+    }
+
+    .slot-admin-buttons {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0px;
+        background: rgba(0,0,0,0.6);
+        z-index: -1;
+        transition: all 1s ease;
+        opacity: 0;
+        visibility: hidden;
+
+        -webkit-transition-delay: 1s;
+        transition-delay: 1s;
+
+        a {
+            position: absolute;
+            color: #ffffff;
+            cursor: pointer;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            i {
+                display: block;
+                font-size: 30px;
+                font-weight: 100;
+            }
+        }
+    }
+}
+

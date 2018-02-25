@@ -1,0 +1,15 @@
+{% extends Bundle ~ '/Base/wrapper.html.twig' %}
+{% import Bundle ~ '/Macros/admin.html.twig' as AdminMacro %}
+
+{% block html_attributes %}lang="en"{% endblock html_attributes %}
+
+{% block body %}
+    <div class="container">
+        {{ dump(page) }}
+        {% for area in page.layout.areas %}
+            <div id="{{ area.name }}" data-beaver="area" data-page="{{ page.id }}">
+                {% include '@Core/Components/blocks.html.twig' with { 'blocks' : area.blocks } %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock body %}

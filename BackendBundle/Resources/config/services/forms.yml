@@ -1,0 +1,18 @@
+services:
+    beaver.backend.page.type:
+        public: false
+        class: Beaver\BackendBundle\Form\PageFormType
+        arguments: ['@beaver.core.layouts']
+        tags: [form.type]
+
+    beaver.backend.block.type:
+        public: false
+        class: Beaver\BackendBundle\Form\BlockFormType
+        arguments: ['@beaver.core.block']
+        tags: [form.type]
+
+    beaver.backend.widget.type:
+        public: false
+        class: Beaver\BackendBundle\Form\WidgetFormType
+        arguments: ['@beaver.core.widget']
+        tags: [form.type]

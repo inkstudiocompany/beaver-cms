@@ -1,0 +1,8 @@
+{# Adiciona los botones para administrar el contenido de las areas #}
+{% macro areaAminButtons(page, area) %}
+    <div class="area-admin-buttons" data-page="{{ page.id }}" data-area="{{ area }}">
+        <button title="Add Block" data-rel="add-block">
+            <i class="fa fa-plus-circle"></i>
+        </button>
+    </div>
+{% endmacro %}

@@ -1,0 +1,20 @@
+{% extends Bundle ~ '/Base/wrapper.html.twig' %}
+{% import Bundle ~ '/Macros/admin.html.twig' as AdminMacro %}
+
+{% block html_attributes %}lang="en"{% endblock html_attributes %}
+
+{% block body %}
+    <div class="container">
+        <div class="header" data-beaver="area" id="header">
+            {% include '@Core/Components/blocks.html.twig' with { 'blocks' : page.blocksByArea('header') } %}
+        </div>
+
+        <div class="left-container"data-beaver="area" id="left-container">
+            {% include '@Core/Components/blocks.html.twig' with { 'blocks' : page.blocksByArea('left-container') } %}
+        </div>
+
+        <div class="sidebar" data-beaver="area" id="sidebar">
+            {% include '@Core/Components/blocks.html.twig' with { 'blocks' : page.blocksByArea('sidebar') } %}
+        </div>
+    </div>
+{% endblock body %}

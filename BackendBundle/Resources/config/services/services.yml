@@ -1,0 +1,18 @@
+services:
+    beaver.backend.page:
+        public: true
+        class: Beaver\BackendBundle\Service\PageService
+        arguments: [ '@doctrine.orm.entity_manager', '@beaver.core.layouts', '@beaver.core.block', '@beaver.core.context']
+
+    beaver.backend.menu:
+        public: true
+        class: Beaver\BackendBundle\Service\MenuBuilderService
+        arguments: ['@router', '@beaver.content']
+
+    beaver.wood.backend.menu:
+        public: true
+        class: Beaver\BackendBundle\Service\BackendMenuService
+        arguments: ['@router']
+        tags:
+            - { name: beaver.wood.menu }
+

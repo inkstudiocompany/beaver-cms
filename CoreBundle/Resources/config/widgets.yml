@@ -1,0 +1,5 @@
+services:
+    widget.dummy:
+        class: Beaver\CoreBundle\Widgets\Dummy\DummyWidget
+        arguments: ['@doctrine.orm.entity_manager']
+        tags: [beaver.widget]

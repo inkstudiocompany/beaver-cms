@@ -1,0 +1,21 @@
+{% macro render(menu) %}
+    {% for item in menu %}
+        {% set submenu = item.children is not empty %}
+        <li class="{% if submenu == true %}dropdown {% endif %}item">
+            <a href="{{ item.href }}">
+                {{ item.text }}
+                {% if submenu == true %}<i class="fa fa-angle-down" aria-hidden="true"></i>{% endif %}
+            </a>
+
+            {% if submenu == true %}
+            <ul class="menu-vertical">
+                {% for child in item.children %}
+                    <div class="item">
+                        <a href="{{ child.href }}">{{ child.text }}</a>
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}

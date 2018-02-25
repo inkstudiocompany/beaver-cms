@@ -1,0 +1,27 @@
+{% extends '@Backend/Admin/basic-modal.html.twig' %}
+
+{% block title %}
+    <i class="fa fa-cubes" aria-hidden="true"></i> New Block
+{% endblock title %}
+
+{% block content %}
+    {% set action = path('beaver.ajax.blocks.save') %}
+    {{ form_start(form, { 'id': form.vars.id, 'attr': {'class': 'ui form', 'id': form.vars.id, 'action': action } }) }}
+        {{ form_widget(form.page) }}
+        {{ form_widget(form.area) }}
+        <div class="inline fields">
+            {{ form_label(form.block) }}
+            {{ form_widget(form.block) }}
+        </div>
+
+        {% if form.vars.errors is not empty %}
+            {{ dump(form.vars.errors is empty) }}
+        {% endif %}
+
+        <div class="actions">
+            {% include '@Backend/Admin/basic-cancel-button.html.twig' %}
+            {{ form_widget(form.submit, { 'attr': {'class': 'ui green ok inverted button',
+            'label': '<i class="checkmark icon"></i>Create' }}) }}
+        </div>
+    {{ form_end(form, {'render_rest': true}) }}
+{% endblock content %}

@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    beaver.content:
+        class: Beaver\ContentBundle\Service\ContentService
+        arguments: [ '@doctrine.orm.entity_manager', '@service_container', '@form.factory']

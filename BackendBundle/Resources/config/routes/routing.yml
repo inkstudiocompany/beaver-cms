@@ -1,0 +1,36 @@
+beaver.backend.default:
+    path:     /
+    controller: Beaver\BackendBundle\Controller\BackendController::index
+beaver.backend.dashboard:
+    path:     /dashboard
+    controller: Beaver\BackendBundle\Controller\BackendController::index
+
+# Pages
+beaver.backend.pages:
+    path:     /pages
+    controller: Beaver\BackendBundle\Controller\BackendController::pages
+beaver.backend.page.new:
+    path:     /page/new
+    controller: Beaver\BackendBundle\Controller\BackendController::page
+beaver.backend.page.edit:
+    path:     /page/{id}
+    controller: Beaver\BackendBundle\Controller\BackendController::page
+
+# Contents
+beaver.backend.contents:
+    path: /contents/{content}
+    controller: Beaver\BackendBundle\Controller\ContentController::list
+beaver.backend.new:
+    path: /contents/{content}/new
+    controller: Beaver\BackendBundle\Controller\ContentController::new
+beaver.backend.edit:
+    path: /contents/{content}/{id}/edit
+    controller: Beaver\BackendBundle\Controller\ContentController::edit
+beaver.backend.delete:
+    path: /contents/{content}/{id}/delete
+    controller: Beaver\BackendBundle\Controller\ContentController::delete
+
+beaver.backend.page:
+    path:   /{slug}
+    controller: Beaver\CoreBundle\Controller\PageController::page
+    defaults: { slug: 'home' }

@@ -1,0 +1,29 @@
+{% extends '@Core/Base/wrapper.html.twig' %}
+
+{% block styles %}
+    {{ parent() }}
+    {% include '@Backend/Backend/Components/styles.html.twig' %}
+{% endblock styles %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% include '@Backend/Backend/Components/javascript.html.twig' %}
+{% endblock javascript %}
+
+{% block backend_navbar %}
+    {% include '@Backend/Admin/navbar.html.twig' %}
+{% endblock backend_navbar %}
+
+{% block form_scripts %}
+{% endblock form_scripts %}
+
+{% block admin_containers %}
+    <div id="beaver-modal-wrapper"></div>
+    <div id="loading" class="beaver-loading out"></div>
+    {% include '@Backend/Admin/bars/block-admin-bar.html.twig' %}
+    {#% include '@Backend/Admin/bars/slot-admin-bar.html.twig' %#}
+{% endblock admin_containers %}
+
+{% block backend_scripts %}
+
+{% endblock backend_scripts %}

@@ -1,0 +1,5 @@
+beaver.backend.ajax.page.publish:
+    path:       /page/publish/{page}
+    methods:    [POST]
+    defaults:   { _controller: BeaverBackendBundle:Ajax/Page:publish }
+    condition: 'request.isXmlHttpRequest()'

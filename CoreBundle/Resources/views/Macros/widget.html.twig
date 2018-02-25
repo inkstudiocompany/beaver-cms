@@ -1,0 +1,8 @@
+{% macro render(block, slot) %}
+    {% set widgets = block.slot(slot) %}
+
+    {% if widgets %}
+        {% set widget = widgets | first %}
+        {% include widget.view %}
+    {% endif %}
+{% endmacro %}

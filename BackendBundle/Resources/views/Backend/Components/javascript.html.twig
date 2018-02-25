@@ -1,0 +1,16 @@
+{# Font Awesome #}
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+{# Framework Scripts #}
+<script type="text/javascript" src="{{ asset('bundles/beaver/js/beaver.min.js') }}"></script>
+
+{% if page is defined %}
+<script type="text/javascript">
+    var beaverInfo = {
+        page: {{ page.id }}
+    };
+</script>
+{% endif %}

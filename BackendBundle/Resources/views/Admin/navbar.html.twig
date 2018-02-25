@@ -1,0 +1,21 @@
+{% import '@Backend/Macros/menu.html.twig' as menubuilder %}
+
+<navbar class="backend-navbar">
+    <h1>Beaver CMS</h1>
+
+    <div class="buttons">
+        <div class="hamburguer-menu" id="menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <ul class="menu-vertical">
+        {{ menubuilder.render(menu.beaver) }}
+        {{ menubuilder.render(menu.woods) }}
+    </ul>
+</navbar>

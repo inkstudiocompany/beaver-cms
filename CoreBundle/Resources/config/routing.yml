@@ -1,0 +1,3 @@
+beaver.core.page:
+    path:   /{slug}
+    defaults: { _controller: BeaverCoreBundle:Page:page, slug: 'home' }

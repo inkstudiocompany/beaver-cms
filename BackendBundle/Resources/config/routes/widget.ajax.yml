@@ -1,0 +1,23 @@
+beaver.ajax.widgets.form:
+    path:       /widgets/form
+    methods:    [GET]
+    defaults:   { _controller: BeaverBackendBundle:Ajax\Widget:newModal }
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.widgets.save:
+    path:       /widgets
+    methods:    [POST]
+    defaults:   { _controller: BeaverBackendBundle:Ajax\Widget:save }
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.widgets.delete:
+    path:       /widgets
+    methods:    [DELETE]
+    defaults:   { _controller: BeaverBackendBundle:Ajax\Widget:drop }
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
