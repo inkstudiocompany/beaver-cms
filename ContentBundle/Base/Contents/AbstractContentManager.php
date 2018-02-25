@@ -19,8 +19,6 @@ use Symfony\Component\Form\FormFactory;
  */
 abstract class AbstractContentManager
 {
-    const TYPE = false;
-
     /** @var ContentManagerInterface $manager */
     protected static $manager = null;
 
@@ -169,8 +167,11 @@ abstract class AbstractContentManager
         return $entity;
     }
 
-    static function Type()
-    {
-        return self::TYPE;
-    }
+    /** @return string */
+    static function Type();
+	
+	/**
+	 * @return \Beaver\CoreBundle\Response\BaseResponse
+	 */
+	public function getResponse();
 }

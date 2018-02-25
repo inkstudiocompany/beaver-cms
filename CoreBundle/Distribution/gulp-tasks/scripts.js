@@ -49,7 +49,7 @@ gulp.task('beaver-jquery-plugins', ['third-party-scripts'], (response) => {
     pump([
         gulp.src([
             '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
-            '../vendor/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
+            '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
         ]),
         concat('jquery.beaver.min.js'),
         // minify(),

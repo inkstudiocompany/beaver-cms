@@ -40,6 +40,7 @@ var required = [
  */
 var helpers = [
     '../src/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
 ];
 
 /**
@@ -49,6 +50,7 @@ var helpers = [
  */
 var app = [
     '../src/Beaver/BackendBundle/Resources/assets/js/App/*.js',
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/App/*.js',
 ];
 
 /**
@@ -57,7 +59,8 @@ var app = [
  * @type {string[]}
  */
 var jqueryPlugins = [
-    '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
+    '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
 ];
 
 /**
@@ -65,7 +68,10 @@ var jqueryPlugins = [
  *
  * @type {string[]}
  */
-var main = ['../src/Beaver/BackendBundle/Resources/assets/js/main.js'];
+var main = [
+    '../src/Beaver/BackendBundle/Resources/assets/js/main.js',
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/main.js'
+];
 
 /**
  * Compile files.
@@ -74,5 +80,5 @@ gulp.task('beaver-script', (response) => {
     return gulp.src(required.concat(helpers).concat(jqueryPlugins).concat(app).concat(main))
         .pipe(concat('beaver.min.js'))
         .pipe(gulp.dest(dest))
-    ;
+;
 });
