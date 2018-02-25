@@ -7,6 +7,8 @@
  */
 namespace Beaver\ContentBundle\Service;
 
+use Beaver\BackendBundle\BackendBundle;
+use Beaver\CoreBundle\Model\Base\Statutory;
 use Beaver\CoreBundle\Response\ArrayResponse;
 use Beaver\CoreBundle\Response\BaseResponse;
 use Beaver\CoreBundle\Response\BooleanResponse;
@@ -87,10 +89,17 @@ class ContentService
         $contentResponse = $contentManager->getResponse();
         foreach ($contentManager->list() as $contentEntity)
         {
-            if (BaseResponse::SUCCESS === $contentResponse->setData($contentEntity)->isSuccess()) {
-                $listResponse->addItem($contentResponse->getData());
-                $contentResponse->reset();
-            }
+	        if (BaseResponse::SUCCESS === $contentResponse->setData($contentEntity)->isSuccess()) {
+		        if (BackendBundle::BUNDLE !== $this->serviceContainer->get('beaver.core.context')->getBundle()) {
+			        if (Statutory::PUBLISHED === $contentResponse->getData()->isPublished()) {
+				        $listResponse->addItem($contentResponse->getData());
+			        }
+		        } elseif (BackendBundle::BUNDLE === $this->serviceContainer->get('beaver.core.context')->getBundle()) {
+			        $listResponse->addItem($contentResponse->getData());
+		        }
+		
+		        $contentResponse->reset();
+	        }
         }
 
         return $listResponse;
