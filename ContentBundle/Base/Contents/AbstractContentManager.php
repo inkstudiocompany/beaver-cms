@@ -8,9 +8,9 @@
 namespace Beaver\ContentBundle\Base\Contents;
 
 use Beaver\ContentBundle\Base\Entity\ContentEntityInterface;
+use Beaver\ContentBundle\Service\Response\ContentResponse;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\Form\FormFactory;
 
 /**
@@ -21,12 +21,6 @@ abstract class AbstractContentManager
 {
     /** @var ContentManagerInterface $manager */
     protected static $manager = null;
-
-    /** @var  string */
-    protected $repository = false;
-
-    /** @var  string */
-    protected $formType = false;
 
     /** @var  EntityManager */
     protected $entityManager;
@@ -43,8 +37,37 @@ abstract class AbstractContentManager
         }
         return self::$manager;
     }
-
-    /**
+	
+	/**
+	 * Returns string as ID's content.
+	 *
+	 * @return mixed
+	 */
+	abstract static function Type();
+	
+	/**
+	 * Returns the formtype for creation/edition of a content.
+	 *
+	 * @return mixed
+	 */
+	abstract public function FormType();
+	
+	/**
+	 * Return a repository for the content.
+	 *
+	 * @return \Beaver\ContentBundle\Base\Entity\AbstractContentEntity
+	 */
+	abstract public function Repository();
+	
+	/**
+	 * @return ContentResponse
+	 */
+	public function getResponse()
+	{
+		return new ContentResponse();
+	}
+	
+	/**
      * @param EntityManager $entityManager
      * @return $this
      */
@@ -65,10 +88,10 @@ abstract class AbstractContentManager
 	 */
     public function form(FormFactory $formFactory, $data = null, array $options = array())
     {
-        if (false === $this->formType) {
+        if (false === $this->FormType()) {
             throw new \Exception('No se ha definido el form type para el contenido. Se espera que defina el atributo $formType');
         }
-        return $formFactory->create($this->formType, $data, $options);
+        return $formFactory->create($this->FormType(), $data, $options);
     }
 
     /**
@@ -86,7 +109,7 @@ abstract class AbstractContentManager
      */
     public function list($page = 1)
     {
-        return $this->entityManager->getRepository($this->repository)->findAll();
+        return $this->entityManager->getRepository($this->Repository())->findAll();
     }
 	
 	/**
@@ -98,7 +121,7 @@ abstract class AbstractContentManager
     public function get($id)
     {
         try {
-            return $this->entityManager->getRepository($this->repository)->find($id);
+            return $this->entityManager->getRepository($this->Repository())->find($id);
         } catch (\Exception $exception) {
             throw $exception;
         }
@@ -112,7 +135,7 @@ abstract class AbstractContentManager
     public function delete($id)
     {
         try {
-            $contentEntity = $this->entityManager->getRepository($this->repository)->find($id);
+            $contentEntity = $this->entityManager->getRepository($this->Repository())->find($id);
             $this->entityManager->remove($contentEntity);
             $this->entityManager->flush();
             $this->entityManager->close();
@@ -134,7 +157,15 @@ abstract class AbstractContentManager
      * @param array $data
      * @return mixed
      */
-    abstract public function setEntityData(ContentEntityInterface $entity, $data = []);
+    public function setEntityData(ContentEntityInterface $entity, $data = [])
+    {
+    	foreach ($data as $name => $value)
+	    {
+	    	if (method_exists($entity, 'set'.ucfirst(strtolower($name)))) {
+			    $entity->{'set'.ucfirst(strtolower($name))}($value);
+		    }
+	    }
+    }
 
     /**
      * @param array $data
@@ -146,11 +177,13 @@ abstract class AbstractContentManager
         try {
             /** @var ContentEntityInterface $entity */
             $entity = false;
+            $repository = $this->Repository();
+            
             if (true === isset($data['id'])) {
-                $entity = $this->entityManager->getRepository($this->repository)->find($data['id']);
+                $entity = $this->entityManager->getRepository($this->Repository())->find($data['id']);
             }
             if (false === isset($data['id'])) {
-                $entity = new $this->repository;
+                $entity = new $repository;
             }
 
             $this->setEntityData($entity, $data);
@@ -166,12 +199,4 @@ abstract class AbstractContentManager
 
         return $entity;
     }
-
-    /** @return string */
-    abstract static function Type();
-	
-	/**
-	 * @return \Beaver\CoreBundle\Response\BaseResponse
-	 */
-	abstract public function getResponse();
 }

@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * Class BannerType
  * @package Beaver\ContentBundle\Banner
  */
-class DummyType extends AbstractContentType
+class Type extends AbstractContentType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -39,14 +39,12 @@ class DummyType extends AbstractContentType
             ])
         ;
     }
-
-    /**
-     *
-     */
+	
+	/**
+	 * @return string
+	 */
     protected function getType()
     {
-        return Dummy::TYPE;
+        return Manager::Type();
     }
-
-
 }

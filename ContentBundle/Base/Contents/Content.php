@@ -10,14 +10,16 @@ namespace Beaver\ContentBundle\Base\Contents;
 use Beaver\CoreBundle\Model\Base\Statutory;
 
 /**
- * Class AbstractContent
- * @package Beaver\ContentBundle\Base
+ * Class Content
+ *
+ * @package Beaver\ContentBundle\Base\Contents
  */
-abstract class AbstractContent extends Statutory implements ContentInterface
+abstract class Content extends Statutory
 {
+	
     /** @var  int */
     protected $id;
-
+    
     /**
      * @return int
      */
@@ -38,15 +40,10 @@ abstract class AbstractContent extends Statutory implements ContentInterface
     }
 
     /**
-     * @return string
-     */
-    public function getType()
-    {
-        return self::TYPE;
-    }
-
-    /**
-     * @return string
-     */
-    abstract public function getListName();
+	 * Returns data model represented at array
+	 */
+	public function toArray()
+	{
+		// TODO: Implement toArray() method.
+	}
 }

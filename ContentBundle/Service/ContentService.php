@@ -47,7 +47,7 @@ class ContentService
         $contents = [];
         if (true === $this->serviceContainer->hasParameter('contents')) {
             foreach ($this->serviceContainer->getParameter('contents') as $content) {
-                $contents[$content['type']] = $content;
+                $contents[$content::Type()] = $content;
             }
         }
         return $contents;
@@ -65,7 +65,7 @@ class ContentService
             throw new \Exception('Content Manager no encontrado.');
         }
         /** @var AbstractContentManager $contentManager */
-        eval('$contentManager = ' . $contents[$content]['manager'] . '::manager();');
+        $contentManager = $contents[$content]::manager();
         return $contentManager->setServices($this->entityManager);
     }
 

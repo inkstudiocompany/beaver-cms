@@ -61,4 +61,22 @@ abstract class AbstractContentEntity implements ContentEntityInterface
         $this->published = $published;
         return $this;
     }
+	
+	/**
+	 * @param $property
+	 *
+	 * @return mixed
+	 */
+	public function __get($property)
+	{
+		if (!property_exists($this, $property)){
+			throw new \InvalidArgumentException(
+				"Getting the field '$property' is not valid for this entity"
+			);
+		}
+		
+		$accessor = 'get' . ucfirst(strtolower($property));
+		return (method_exists($this, $accessor) && is_callable(array($this, $accessor))) ?
+			$this->$accessor() : $this->$property;
+	}
 }

@@ -17,10 +17,10 @@ abstract class Statutory extends AbstractModel
     const UNPUBLISHED   = false;
     
     /** @var integer */
-    private $id;
+    protected $id;
     
     /** @var boolean */
-    private $published;
+    protected $published;
     
     /**
      * @return int
@@ -29,10 +29,12 @@ abstract class Statutory extends AbstractModel
     {
         return $this->id;
     }
-    
-    /**
-     * @param int $id
-     */
+	
+	/**
+	 * @param int $id
+	 *
+	 * @return \Beaver\CoreBundle\Model\Base\Statutory
+	 */
     public function setId($id)
     {
         $this->id = $id;
@@ -46,10 +48,12 @@ abstract class Statutory extends AbstractModel
     {
         return $this->published;
     }
-    
-    /**
-     * @param bool $published
-     */
+	
+	/**
+	 * @param bool $published
+	 *
+	 * @return \Beaver\CoreBundle\Model\Base\Statutory
+	 */
     public function setPublished($published)
     {
         $this->published = $published;
