@@ -1,5 +1,5 @@
 {
-    "name": "beaver/Beaver",
+    "name": "inkstudio/beaver",
     "version": "1.0.0",
     "description": "My custom cms",
     "type": "symfony-bundle",
@@ -39,6 +39,7 @@
         "symfony/console": "^4.0",
         "symfony/form": "^4.0",
         "symfony/orm-pack": "^1.0",
-        "symfony/expression-language": "^4.0"
+        "symfony/expression-language": "^4.0",
+        "symfony/security-bundle": "^4.0",
     }
 }

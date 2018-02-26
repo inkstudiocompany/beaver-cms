@@ -1,3 +1,13 @@
 imports:
     - { resource: 'services/forms.yml' }
     - { resource: 'services/services.yml' }
+    - { resource: 'security.yaml' }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Beaver\BackendBundle\Controller\:
+        resource: '../../Controller/ServiceController.php'

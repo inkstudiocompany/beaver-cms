@@ -74,12 +74,14 @@ class InstallAssetsCommand extends Command
 			        echo $buffer;
 		        }
 	        });
-	        
+	  
             $output->writeln('Step 2. Eliminando directorios antiguos');
-            $fs->remove('public/bundles/beaver/fonts');
-            $fs->remove('public/bundles/beaver/images');
-            $fs->remove('public/bundles/beaver/css');
-            $fs->remove('public/bundles/beaver/js');
+            $fs->remove([
+            	'public/bundles/beaver/fonts',
+	            'public/bundles/beaver/images',
+	            'public/bundles/beaver/css',
+	            'public/bundles/beaver/js'
+            ]);
 	
 	        $output->writeln('Step 3. Copiando archivos de instalación');
 	        foreach ($this->files as $file) {
@@ -89,29 +91,31 @@ class InstallAssetsCommand extends Command
 			        }
 		        }
 	        }
-	
+	        
 	        $output->writeln('Step 4. Instalando modulos de node');
 	
 	        $process = new Process('npm install -prefix ' . $this->temporal);
 	        $process->setTimeout(null);
 	        $process->run(function ($type, $buffer) {
 		        if (Process::ERR === $type) {
-			        echo $buffer;
+			        echo 'ERR > '.$buffer;
 		        } else {
-			        echo $buffer;
+			        echo 'OUT > '.$buffer;
 		        }
 	        });
 	
-	
-	        $output->writeln('Step 5. Compilando archivos');
-	        $process = new Process('gulp --gulpfile beaver-install/gulpfile.js');
-	        $process->start(function ($type, $buffer) {
-		        if (Process::ERR === $type) {
-			        echo $buffer;
-		        } else {
-			        echo $buffer;
-		        }
-	        });
+			if (true == $process->isSuccessful()) {
+				$output->writeln('Step 5. Compilando archivos');
+				$process = new Process('gulp --gulpfile beaver-install/gulpfile.js');
+				$process->run(function ($type, $buffer) {
+					if (Process::ERR === $type) {
+						echo 'ERR > '.$buffer;
+					} else {
+						echo 'OUT > '.$buffer;
+					}
+				});
+			}
+	        
 
             $output->writeln('Instalación finalizada');
             echo $process->getOutput();
