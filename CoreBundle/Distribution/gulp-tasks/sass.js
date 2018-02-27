@@ -37,8 +37,8 @@ var thirdParty = [
  */
 gulp.task('third-party-styles', () => {
     gulp.src(thirdParty)
-        .pipe(gulp.dest(dest))
-    ;
+    .pipe(gulp.dest(dest))
+;
 });
 
 /**
@@ -46,15 +46,29 @@ gulp.task('third-party-styles', () => {
  */
 gulp.task('styles', ['third-party-styles'], (response) => {
     pump([
-        gulp.src([
-            '../src/Beaver/BackendBundle/Resources/assets/**/*.scss',
-            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/**/*.scss'
+             gulp.src([
+            '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
+            '../vendor/beaver/Beaver/BackendBundle/Resources/assets/scss/css.scss'
         ]),
-        sass().on('error', sass.logError),
-        concat('styles.css'),
-        uglifycss(),
-        gulp.dest(dest)
-    ], response);
+             sass().on('error', sass.logError),
+             concat('styles.css'),
+             uglifycss(),
+             gulp.dest(dest)
+         ], response);
 });
 
-gulp.task('backend-styles', ['styles']);
+/**
+ * Compila los archivos de backend.
+ */
+gulp.task('login-styles', function () {
+    return gulp.src([
+        '../src/Beaver/BackendBundle/Resources/assets/scss/login.scss',
+        '../vendor/beaver/Beaver/BackendBundle/Resources/assets/scss/login.scss'
+    ])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('login.css'))
+        .pipe(uglifycss())
+        .pipe(gulp.dest(dest));
+});
+
+gulp.task('backend-styles', ['styles', 'login-styles']);
