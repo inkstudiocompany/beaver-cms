@@ -22,9 +22,9 @@ use Symfony\Component\Process\Process;
  */
 class InstallAssetsCommand extends Command
 {
-	private $src = ['src/', 'vendor/beaver/'];
+	private $src = ['src/', 'vendor/inkstudio/beaver/'];
 	private $temporal = './beaver-install/';
-	private $distribution_folder = 'Beaver/CoreBundle/Distribution/';
+	private $distribution_folder = 'CoreBundle/Distribution/';
 	private $files = [
 		'package.json',
 		'gulpfile.js',
