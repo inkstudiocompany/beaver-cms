@@ -40,7 +40,7 @@ var required = [
  */
 var helpers = [
     '../src/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
-    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
+    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
 ];
 
 /**
