@@ -1,7 +1,3 @@
-beaver.annotation:
-    resource: '@BackendBundle/Controller'
-    type: annotation
-
 beaver.backend.default:
     path:     /
     controller: Beaver\BackendBundle\Controller\BackendController::index

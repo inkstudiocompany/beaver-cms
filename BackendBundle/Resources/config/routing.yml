@@ -1,3 +1,10 @@
+beaver.annotation:
+    resource: '@BackendBundle/Controller'
+    type: annotation
+
+logout:
+    path: /logout
+
 backend.page:
     prefix: /ajax
     resource: 'routes/page.ajax.yml'
