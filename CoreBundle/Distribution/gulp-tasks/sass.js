@@ -34,8 +34,8 @@ var thirdParty = [
 /**
  * Copia las librerias de terceros.
  */
-gulp.task('third-party-styles', () => {
-    gulp.src(thirdParty)
+gulp.task('third-party-styles', function () {
+    return gulp.src(thirdParty)
     .pipe(gulp.dest(dest))
 ;
 });
@@ -48,11 +48,10 @@ gulp.task('styles', ['third-party-styles'], function () {
         '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
         '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/cms.scss'
     ])
-        .pipe(sass().on('error', sass.logError))
-        .pipe(concat('styles.css'))
-        .pipe(uglifycss())
-        .pipe(gulp.dest(dest))
-        ;
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('styles.css'))
+    .pipe(uglifycss())
+    .pipe(gulp.dest(dest));
 });
 
 /**
@@ -63,10 +62,10 @@ gulp.task('login-styles', function () {
         '../src/Beaver/BackendBundle/Resources/assets/scss/login.scss',
         '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/login.scss'
     ])
-        .pipe(sass().on('error', sass.logError))
-        .pipe(concat('login.css'))
-        .pipe(uglifycss())
-        .pipe(gulp.dest(dest));
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('login.css'))
+    .pipe(uglifycss())
+    .pipe(gulp.dest(dest));
 });
 
 gulp.task('backend-styles', ['styles', 'login-styles']);

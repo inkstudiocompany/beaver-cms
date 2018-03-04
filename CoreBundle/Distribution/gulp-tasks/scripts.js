@@ -9,7 +9,6 @@
  */
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
-    pump        = require('pump'),
     composer    = require('gulp-uglify/composer'),
     uglifyjs    = require('uglify-es')
 ;
@@ -36,8 +35,8 @@ var thirdParty = [
 /**
  * Copia las librerias de terceros.
  */
-gulp.task('third-party-scripts', () => {
-    gulp.src(thirdParty)
+gulp.task('third-party-scripts', function () {
+    return gulp.src(thirdParty)
         .pipe(gulp.dest(dest))
     ;
 });
@@ -45,31 +44,26 @@ gulp.task('third-party-scripts', () => {
 /**
  * Compila los archivos de backend.
  */
-gulp.task('beaver-jquery-plugins', ['third-party-scripts'], (response) => {
-    pump([
-        gulp.src([
-            '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
-            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
-        ]),
-        concat('jquery.beaver.min.js'),
-        // minify(),
-        gulp.dest(dest)
-    ], response);
+gulp.task('beaver-jquery-plugins', ['third-party-scripts'], function () {
+    return gulp.src([
+        '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
+        '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
+    ])
+    .pipe(concat('jquery.beaver.min.js'))
+    .pipe(gulp.dest(dest));
 });
 
 /**
  * Compila los archivos de backend.
  */
-gulp.task('javascript', ['beaver-jquery-plugins'], (response) => {
-    pump([
-        gulp.src([
-            '../src/Beaver/BackendBundle/Resources/assets/js/*.js',
-            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/*.js'
-        ]),
-        concat('backend.js'),
-        // minify(),
-        gulp.dest(dest)
-    ], response);
+gulp.task('javascript', ['beaver-jquery-plugins'], function () {
+    return gulp.src([
+        '../src/Beaver/BackendBundle/Resources/assets/js/*.js',
+        '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/*.js'
+    ])
+    .pipe(concat('backend.js'))
+    .pipe(gulp.dest(dest))
+    ;
 });
 
 gulp.task('backend-scripts', ['javascript']);
