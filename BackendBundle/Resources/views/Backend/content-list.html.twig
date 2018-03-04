@@ -1,5 +1,6 @@
 {% extends '@Backend/Base/backend-wrapper.html.twig' %}
 {% import '@Backend/Macros/components.html.twig' as Components %}
+{% import '@Backend/Macros/theme.html.twig' as Theme %}
 
 {% block custom_javascript %}
     <script type="text/javascript">
@@ -10,8 +11,8 @@
 {% endblock custom_javascript %}
 
 {% block body %}
+    {{ Theme.title(type | capitalize ~ 's') }}
     <h3>
-        {{ type | capitalize }}s
         <a class="btn btn-outline-success float-right" href="{{ path('beaver.backend.new', {'content':type}) }}">
             Crear {{ type | capitalize }} <i class="fas fa-plus-circle"></i>
         </a>

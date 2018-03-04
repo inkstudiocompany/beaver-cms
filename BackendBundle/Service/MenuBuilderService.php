@@ -78,6 +78,7 @@ class MenuBuilderService
 		$this
 			->addItem(new Item($this->router->generate('beaver.backend.default'), 'Dashboard'), 'beaver')
 			->addItem(new Item('#', 'Configuración'), 'beaver')
+			->addItem(new Item($this->router->generate('beaver.gallery'), 'Galería'), 'beaver')
 			->addItem(
 			    new Item(
 			        $this->router->generate('beaver.backend.pages'),

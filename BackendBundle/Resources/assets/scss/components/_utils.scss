@@ -13,3 +13,31 @@
     top: 0px;
   }
 }
+
+.empty {
+  margin: 0px auto;
+  text-align: center;
+  position: relative;
+  transform: translate(-50%, 50%);
+  margin-left: 50%;
+  margin-top: 5%;
+  color: #ff7979;
+
+  img{
+    border-radius: 50% !important;
+    width: 70px; height: 70px;
+    border: 1px solid #f0932b;
+  }
+
+  p {
+    font-family: $font-family;
+    font-size: 20px !important;
+
+    span {
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 25px;
+      color: #eb4d4b;
+    }
+  }
+}

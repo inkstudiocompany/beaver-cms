@@ -1,0 +1,6 @@
+beaver.gallery:
+    path:       /gallery
+    methods:    [GET]
+    controller: Beaver\BackendBundle\Controller\BackendController::gallery
+    options:
+        expose: true

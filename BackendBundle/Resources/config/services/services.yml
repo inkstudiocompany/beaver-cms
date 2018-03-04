@@ -16,3 +16,7 @@ services:
         tags:
             - { name: beaver.wood.menu }
 
+    beaver.filesystem:
+        public: true
+        class: Beaver\BackendBundle\Service\FileSystemService
+        arguments: ['%kernel.project_dir%']

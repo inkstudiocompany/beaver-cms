@@ -1,0 +1,32 @@
+/** Gallery Module **/
+.drag-and-drop-area {
+  background: #f0932b;
+  margin: 0px auto 10px auto;
+  padding: 40px 5px;
+  height: 100px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.custom-file input { cursor: pointer; }
+
+.gallery {
+  .card {
+    width: 18%;
+    margin: 0 1% 1% 1%;
+
+    .delete-button {
+      position: absolute;
+      border: none;
+      background: none;
+      right: 5px;
+      color: #ff7979;
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -15,6 +15,8 @@
             method      : 'GET',
             url         : '',
             data        : '',
+            processData : false,
+            contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
             callback    : function (response) {
                 console.log(response);
             }
@@ -33,10 +35,12 @@
             _Utils.progressbar.animate(0.4);
 
             $.ajax({
-                method  : settings.method,
-                url     : settings.url,
-                data    : settings.data,
-                success : function (response) {
+                method      : settings.method,
+                url         : settings.url,
+                data        : settings.data,
+                contentType : settings.contentType,
+                processData : settings.processData,
+                success     : function (response) {
                     if (false === response.status) {
                         _Modal.Error(response.error);
                     }

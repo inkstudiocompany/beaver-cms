@@ -1,5 +1,6 @@
 {% extends '@Backend/Base/backend-wrapper.html.twig' %}
 {% import '@Backend/Macros/components.html.twig' as Components %}
+{% import '@Backend/Macros/theme.html.twig' as Theme %}
 
 {% block custom_styles %}
     {{ parent() }}
@@ -15,7 +16,7 @@
 {% endblock custom_javascript %}
 
 {% block body %}
-    <h3>Pages</h3>
+    {{ Theme.title('Pages') }}
 
     <table class="table table-striped">
         <thead>

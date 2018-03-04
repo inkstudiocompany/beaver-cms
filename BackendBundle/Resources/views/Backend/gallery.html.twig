@@ -1,0 +1,84 @@
+{% extends '@Backend/Base/backend-wrapper.html.twig' %}
+{% import '@Backend/Macros/components.html.twig' as Components %}
+{% import '@Backend/Macros/theme.html.twig' as Theme %}
+
+{% block custom_styles %}
+    {{ parent() }}
+{% endblock custom_styles %}
+
+{% block custom_javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function () {
+            $('#image-upload-form').formAjax({
+                callback: function (image) {
+                    $('div.gallery').append($(image));
+                    _Modal.Success();
+                }
+            });
+
+            $('[data-rel="delete-image"]').off('click').on('click', function () {
+                var $image  = $(this).data('image');
+                var $card   = $(this).parents('.card');
+
+                _Modal.Confirm({
+                    message: '¿Seguro quieres eliminar la imagen?',
+                    callback: function () {
+
+                        _Http.Delete({
+                            url     : '{{ path('beaver.ajax.image.delete') }}',
+                            data    : 'image=' + $image,
+                            callback: function () {
+                                _Modal.Success();
+                                $card.remove();
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('#customFile').off('change').on('change', function () {
+                $('#image-upload-form').submit();
+            });
+        });
+    </script>
+{% endblock custom_javascript %}
+
+{% block body %}
+    {{ Theme.title('Gallery') }}
+
+    <div class="row">
+        <div class="col text-center">
+            <form action="{{ path('beaver.ajax.image.upload') }}" method="post" id="image-upload-form" enctype="multipart/form-data">
+                <div class="drag-and-drop-area col-4 align-content-center">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <label>Arrastre una imagen aquí.</label>
+                </div>
+                <div class="custom-file col-4">
+                    <input type="file" class="custom-file-input" id="customFile" name="file-to-upload">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">&nbsp;</div>
+    </div>
+
+    <div class="row">
+        <div class="col"><hr></div>
+        <div class="col-auto">Your Pics</div>
+        <div class="col"><hr></div>
+    </div>
+
+    <div class="row gallery">
+        {% if pics is empty %}
+            {{ Theme.empty() }}
+        {% endif %}
+
+        {% for image in pics %}
+            {% include '@Backend/Backend/Partials/_image.gallery.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock body %}

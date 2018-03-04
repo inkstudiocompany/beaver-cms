@@ -3,7 +3,7 @@
         /**
          * Init the functions for navbar
          */
-        navbar: () => {
+        navbar: function () {
             $('.submenu')
                 .off('click')
                 .on('click', function(){
@@ -37,7 +37,57 @@
                 $(this).removeClass('animated ' + animationName);
             });
             return this;
-        }
+        },
 
+        /**
+         * Sends form by ajax method.
+         *
+         * @param options
+         * @returns {*}
+         */
+        formAjax: function (options) {
+            var settings = $.extend({
+                callback: function (response) {
+                    console.log(response);
+                }
+            }, options);
+
+            return this.each(function () {
+                $(this).on('submit', function (e) {
+                    e.preventDefault();
+
+                    var ajaxOptions = {
+                        method      : $(this).attr('method'),
+                        url         : $(this).attr('action'),
+                        data        : $(this).serialize(),
+                        callback    : settings.callback
+                    };
+
+                    if ('multipart/form-data' === $(this).attr('enctype')) {
+                        var formData = new FormData($(this));
+                        $(this)
+                            .find('input[type!="file"],input[type!="button"],input[type!="submit"],select,textarea')
+                            .each(function (index,elem) {
+                                formData.append($(elem).attr('name'), $(elem).val());
+                            });
+
+                        $(this).find('input[type="file"]').each(function (index,elem) {
+                            formData.append($(elem).attr('name'), $(elem).prop('files')[0]);
+                        });
+
+                        ajaxOptions = {
+                            method:     $(this).attr('method'),
+                            url:        $(this).attr('action'),
+                            data:       formData,
+                            callback:   settings.callback,
+                            processData:false,
+                            contentType:false
+                        };
+                    }
+
+                    _Http.Request(ajaxOptions);
+                });
+            });
+        }
     });
 })(jQuery);

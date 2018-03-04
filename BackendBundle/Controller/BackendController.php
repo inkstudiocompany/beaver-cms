@@ -81,4 +81,14 @@ class BackendController extends ControllerBase
             'success'   => $success
         ]);
     }
+	
+	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+    public function gallery()
+    {
+    	return $this->render('@Backend/Backend/gallery.html.twig', [
+    		'pics' => $this->get('beaver.filesystem')->gallery()->getData()
+	    ]);
+    }
 }
