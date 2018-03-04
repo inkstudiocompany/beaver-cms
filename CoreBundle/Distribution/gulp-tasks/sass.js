@@ -9,7 +9,6 @@
  */
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
-    pump        = require('pump'),
     uglifycss   = require('gulp-uglifycss'),
     sass        = require('gulp-sass')
 ;
@@ -44,17 +43,16 @@ gulp.task('third-party-styles', () => {
 /**
  * Compila los archivos de backend.
  */
-gulp.task('styles', ['third-party-styles'], (response) => {
-    pump([
-             gulp.src([
-            '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
-            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/css.scss'
-        ]),
-             sass().on('error', sass.logError),
-             concat('styles.css'),
-             uglifycss(),
-             gulp.dest(dest)
-         ], response);
+gulp.task('styles', ['third-party-styles'], function () {
+    return gulp.src([
+        '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
+        '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/cms.scss'
+    ])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('styles.css'))
+        .pipe(uglifycss())
+        .pipe(gulp.dest(dest))
+        ;
 });
 
 /**
