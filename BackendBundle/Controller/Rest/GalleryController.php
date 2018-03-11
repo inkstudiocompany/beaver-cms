@@ -49,4 +49,24 @@ class GalleryController extends ControllerBase
 		return $this->get('beaver.filesystem')
 			->delete($request->get('image'))->toJsonResponse();
 	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function croptool(Request $request)
+	{
+		return $this->render('@Backend/Forms/crop-tool.html.twig', [
+			'image' => $request->get('image', '')
+		]);
+	}
+	
+	public function cropsave(Request $request)
+	{
+		$cropInfo = json_decode($request->get('info'), '');
+		return $this->get('pixie')
+			->cropImage($cropInfo->image, $cropInfo->width, $cropInfo->height, $cropInfo->x, $cropInfo->y)
+			->toJsonResponse();
+	}
 }

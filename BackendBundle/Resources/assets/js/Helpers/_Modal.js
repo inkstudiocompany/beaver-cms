@@ -9,6 +9,52 @@
 (function (global) {
     global._Modal = {
         /**
+         * Creates a Modal Window.
+         *
+         * @param options
+         * @constructor
+         */
+        Open: function (options) {
+            this.defaults = {
+                title   : '',
+                content : '<p>Your content could be here</p>',
+                url     : '',
+                data    : '',
+                inline  : false,
+                width   : 'auto',
+                onClose : function () {},
+                onOpen  : function () {}
+            };
+
+            var settings = $.extend(this.defaults, options);
+
+            if (settings.inline === true) {
+                $.ajax({
+                    url     : settings.url,
+                    data    : settings.data,
+                    success : function (response) {
+                        $.sweetModal({
+                            width   : settings.width,
+                            title   : settings.title,
+                            content : response,
+                            onClose : settings.onClose,
+                            onOpen  : settings.onOpen
+                        });
+                    }
+                })
+                return false;
+            }
+
+            if (settings.inline === false) {
+                $.sweetModal({
+                    title   : settings.title,
+                    content : settings.content,
+                    onClose : settings.onClose
+                });
+            }
+        },
+
+        /**
          * Alert.
          * @param message
          * @constructor

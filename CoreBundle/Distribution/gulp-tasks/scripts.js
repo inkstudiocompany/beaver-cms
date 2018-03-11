@@ -30,6 +30,8 @@ var thirdParty = [
     'node_modules/jquery-validation/dist/jquery.validate.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
     'node_modules/progressbar.js/dist/progressbar.min.js',
+    'node_modules/cropperjs/dist/cropper.common.js',
+    'node_modules/cropperjs/dist/cropper.min.js',
 ];
 
 /**

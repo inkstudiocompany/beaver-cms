@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/beaver/css/crop-tool.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/beaver/css/cropper.min.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.3.2/cropper.min.js"></script>
+</head>
+
+<body>
+<div class="crop-tool">
+    <div class="image-wrapper">
+        <img id="image" src="{{ asset(image) }}" />
+    </div>
+    <div class="button-bar">
+        <button class="button" onclick="cropAction()">Guardar <i class="fas fa-save"></i></button>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var image = document.getElementById('image');
+    var cropper = new Cropper(image, {
+        viewMode: 1,
+        movable: false,
+        zoomable: false
+    });
+
+    var cropAction = function () {
+        var data = cropper.getData();
+        data.image = '{{ image }}';
+
+        _Http.Post({
+            url: Routing.generate('image.crop.save'),
+            data: 'info=' + JSON.stringify(data),
+            callback: function () {
+                $('img.card-img-top').each(function () {
+                    $(this).attr('src', $(this).attr('src') + '?timestamp=' + new Date().getTime())
+                });
+                _Modal.Success();
+            }
+        })
+    }
+</script>
+</html>

@@ -24,13 +24,12 @@
     "gulp-watch": "^4.3.11",
     "jquery": "^3.3.1",
     "jquery-validation": "^1.16.0",
-    "peer": "^0.2.8",
-    "popper": "^1.0.1",
     "require-dir": "^0.3.2",
     "sweet-modal": "^1.3.2",
     "sweetalert2": "^7.7.0",
     "uglify-es": "^3.3.8",
     "uglify-js": "^3.3.8",
-    "yargs": "^4.7.1"
+    "yargs": "^4.7.1",
+    "cropperjs": "^1.3.2"
   }
 }

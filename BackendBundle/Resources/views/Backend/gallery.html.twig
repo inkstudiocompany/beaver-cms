@@ -37,6 +37,18 @@
                 });
             });
 
+            $('[data-rel="crop-image"]').off('click').on('click', function () {
+                var $image  = $(this).data('image');
+                _Utils.loadingIn();
+                _Modal.Open({
+                    width   : '70%',
+                    url     : Routing.generate('image.crop'),
+                    data    : 'image=' + $image,
+                    inline  : true,
+                    onOpen  : _Utils.loadingOut
+                });
+            });
+
             $('#customFile').off('change').on('change', function () {
                 $('#image-upload-form').submit();
             });

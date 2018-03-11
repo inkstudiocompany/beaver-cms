@@ -26,10 +26,14 @@ class FileSystemService
 	/** @var string  */
 	private $publicPath = '';
 	
+	/** @var string  */
 	private $galleryDir = 'gallery';
 	
-	
-	
+	/**
+	 * FileSystemService constructor.
+	 *
+	 * @param string $projectDir
+	 */
 	public function __construct($projectDir = '')
 	{
 		$this->publicPath = $projectDir . '/public/';
@@ -104,5 +108,15 @@ class FileSystemService
 		}
 		
 		return $deleteResponse;
+	}
+	
+	/**
+	 * @param string $path
+	 *
+	 * @return string
+	 */
+	public function getRealPath(string $path): string
+	{
+		return $this->publicPath . $path;
 	}
 }

@@ -1,7 +1,12 @@
 <div class="card">
-    <button type="button" class="delete-button" data-rel="delete-image" data-image="{{ image }}">
-        <i class="fas fa-trash"></i>
-    </button>
+    <div class="button-bar">
+        <button type="button" class="delete-button" data-rel="crop-image" data-image="{{ image }}">
+            <i class="fas fa-crop"></i>
+        </button>
+        <button type="button" class="delete-button" data-rel="delete-image" data-image="{{ image }}">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
 
     <img class="card-img-top" src="{{ image }}" />
     <div class="card-body">

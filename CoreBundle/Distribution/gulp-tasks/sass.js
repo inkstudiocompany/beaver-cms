@@ -28,7 +28,9 @@ var thirdParty = [
     'node_modules/animate.css/animate.min.css',
     'node_modules/sweet-modal/dist/min/jquery.sweet-modal.min.css',
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
-    'node_modules/bootstrap/dist/css/bootstrap-grid.min.css'
+    'node_modules/bootstrap/dist/css/bootstrap-grid.min.css',
+    'node_modules/bootstrap/dist/css/bootstrap-grid.min.css',
+    'node_modules/cropperjs/dist/cropper.min.css',
 ];
 
 /**

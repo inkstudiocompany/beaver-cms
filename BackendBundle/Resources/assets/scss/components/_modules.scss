@@ -16,16 +16,21 @@
     width: 18%;
     margin: 0 1% 1% 1%;
 
-    .delete-button {
+    .button-bar {
       position: absolute;
-      border: none;
-      background: none;
+      display: block;
       right: 5px;
-      color: #ff7979;
-      opacity: 0.3;
 
-      &:hover {
-        opacity: 1;
+      .delete-button {
+        border: none;
+        background: none;
+        right: 5px;
+        color: #ff7979;
+        opacity: 0.3;
+
+        &:hover {
+          opacity: 1;
+        }
       }
     }
   }

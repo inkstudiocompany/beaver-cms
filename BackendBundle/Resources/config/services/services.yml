@@ -20,3 +20,8 @@ services:
         public: true
         class: Beaver\BackendBundle\Service\FileSystemService
         arguments: ['%kernel.project_dir%']
+
+    pixie:
+        public: true
+        class: Beaver\BackendBundle\Service\PixieService
+        arguments: ['@beaver.filesystem']

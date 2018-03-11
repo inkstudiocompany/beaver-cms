@@ -13,4 +13,3 @@ beaver.ajax.image.delete:
     condition: 'request.isXmlHttpRequest()'
     options:
         expose: true
-

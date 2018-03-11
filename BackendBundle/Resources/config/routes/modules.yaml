@@ -4,3 +4,17 @@ beaver.gallery:
     controller: Beaver\BackendBundle\Controller\BackendController::gallery
     options:
         expose: true
+
+image.crop:
+    path:       /image/crop
+    methods:    [GET]
+    controller: Beaver\BackendBundle\Controller\Rest\GalleryController::croptool
+    options:
+        expose: true
+
+image.crop.save:
+    path:       /image/crop
+    methods:    [POST]
+    controller: Beaver\BackendBundle\Controller\Rest\GalleryController::cropsave
+    options:
+        expose: true
