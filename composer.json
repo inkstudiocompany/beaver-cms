@@ -41,6 +41,6 @@
         "symfony/orm-pack": "^1.0",
         "symfony/expression-language": "^4.0",
         "symfony/security-bundle": "^4.0",
-        "phpixie/image": "^3.3",
+        "phpixie/image": "^3.3"
     }
 }
