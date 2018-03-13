@@ -9,6 +9,7 @@
 namespace Beaver\ContentBundle\Contents\Dummy;
 
 use Beaver\ContentBundle\Base\Form\AbstractContentType;
+use Beaver\ContentBundle\Form\GalleryType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,8 +29,11 @@ class Type extends AbstractContentType
         if (true === isset($options['data']['id'])) {
             $builder->add('id', HiddenType::class);
         }
-
+        
         $builder
+	        ->add('image', GalleryType::class, [
+	        
+	        ])
             ->add('attribute', TextareaType::class, [
                 'label' => false,
                 'attr'  => [

@@ -3,6 +3,28 @@
     width: 150px !important;
 }
 
+.gallery-choice-type {
+  .card.image-type {
+    cursor: pointer;
+
+    [data-prefix="far"] {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: #2ecc71;
+      visibility: hidden;
+    }
+
+    &.selected {
+      border-color: #2ecc71;
+
+      [data-prefix="far"] {
+        visibility: visible;
+      }
+    }
+  }
+}
+
 .backend-form
 {
     position: relative;

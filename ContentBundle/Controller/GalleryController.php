@@ -2,23 +2,46 @@
 /**
  * Created by PhpStorm.
  * User: leonardojsuarez
- * Date: 03/03/2018
- * Time: 13:15
+ * Date: 12/03/2018
+ * Time: 22:37
  */
 
-namespace Beaver\BackendBundle\Controller\Rest;
+namespace Beaver\ContentBundle\Controller;
 
 use Beaver\BackendBundle\Controller\ControllerBase;
 use Beaver\CoreBundle\Response\BaseResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * Class GalleryController
- *
- * @package Beaver\BackendBundle\Controller\Rest
- */
 class GalleryController extends ControllerBase
 {
+	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function gallery()
+	{
+		return $this->render('@Backend/Backend/gallery.html.twig', [
+			'pics' => $this->get('beaver.filesystem')->gallery()->getData()
+		]);
+	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 *
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function galleryType(Request $request)
+	{
+		return $this->render('@Backend/Forms/Modal/image-gallery.html.twig', [
+			'pics'      => $this->get('beaver.filesystem')->gallery()->getData(),
+			'idType'    => $request->get('idType', '')
+		]);
+	}
+	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
+	 */
 	public function upload(Request $request)
 	{
 		$response = new BaseResponse();
@@ -62,6 +85,11 @@ class GalleryController extends ControllerBase
 		]);
 	}
 	
+	/**
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 *
+	 * @return \Symfony\Component\HttpFoundation\JsonResponse
+	 */
 	public function cropsave(Request $request)
 	{
 		$cropInfo = json_decode($request->get('info'), '');

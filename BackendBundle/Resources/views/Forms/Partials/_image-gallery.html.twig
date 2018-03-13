@@ -1,0 +1,10 @@
+<div class="gallery-type">
+    {{ form_widget(input) }}
+    <div class="gallery-button-bar">
+        {{ form_label(input) }}
+        <button type="button" class="btn btn-sm btn-outline-info" data-action="gallery-type" data-rel="{{ input.vars.id }}">Agregar Imagen</button>
+    </div>
+    <div class="gallery-selection" data-rel="{{ input.vars.id }}">
+        Aqui van las imagenes que vamos seleccionando.
+    </div>
+</div>

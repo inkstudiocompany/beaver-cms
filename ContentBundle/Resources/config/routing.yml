@@ -1,3 +1,43 @@
-beaver_content_homepage:
-    path:     /
-    defaults: { _controller: BeaverContentBundle:Default:index }
+beaver.gallery:
+    path:       /gallery
+    methods:    [GET]
+    controller: Beaver\ContentBundle\Controller\GalleryController::gallery
+    options:
+        expose: true
+
+beaver.gallery.type:
+    path:       /type/gallery
+    methods:    [GET]
+    controller: Beaver\ContentBundle\Controller\GalleryController::galleryType
+    options:
+        expose: true
+
+beaver.ajax.image.upload:
+    path:       /gallery/image
+    methods:    [POST]
+    controller: Beaver\ContentBundle\Controller\GalleryController::upload
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+beaver.ajax.image.delete:
+    path:       /gallery/image
+    methods:    [DELETE]
+    controller: Beaver\ContentBundle\Controller\GalleryController::delete
+    condition: 'request.isXmlHttpRequest()'
+    options:
+        expose: true
+
+image.crop:
+    path:       /image/crop
+    methods:    [GET]
+    controller: Beaver\ContentBundle\Controller\GalleryController::croptool
+    options:
+        expose: true
+
+image.crop.save:
+    path:       /image/crop
+    methods:    [POST]
+    controller: Beaver\ContentBundle\Controller\GalleryController::cropsave
+    options:
+        expose: true

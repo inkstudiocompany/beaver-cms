@@ -1,0 +1,69 @@
+{% import '@Backend/Macros/components.html.twig' as Components %}
+{% import '@Backend/Macros/theme.html.twig' as Theme %}
+
+{% block custom_javascript %}
+    <script type="text/javascript">
+        $(function () {
+            $('#image-upload-form').formAjax({
+                callback: function (image) {
+                    $('div.gallery').append($(image));
+                    _Modal.Success();
+                }
+            });
+
+            $('[data-rel="delete-image"]').off('click').on('click', function () {
+                var $image  = $(this).data('image');
+                var $card   = $(this).parents('.card');
+
+                _Modal.Confirm({
+                    message: '¿Seguro quieres eliminar la imagen?',
+                    callback: function () {
+
+                        _Http.Delete({
+                            url     : '{{ path('beaver.ajax.image.delete') }}',
+                            data    : 'image=' + $image,
+                            callback: function () {
+                                _Modal.Success();
+                                $card.remove();
+                            }
+                        });
+                    }
+                });
+            });
+
+            $('[data-rel="crop-image"]').off('click').on('click', function () {
+                var $image  = $(this).data('image');
+                _Utils.loadingIn();
+                _Modal.Open({
+                    width   : '70%',
+                    url     : Routing.generate('image.crop'),
+                    data    : 'image=' + $image,
+                    inline  : true,
+                    onOpen  : _Utils.loadingOut
+                });
+            });
+
+            $('#customFile').off('change').on('change', function () {
+                $('#image-upload-form').submit();
+            });
+        });
+    </script>
+{% endblock custom_javascript %}
+
+{% block body %}
+    <div class="row">
+        <div class="col"><hr></div>
+        <div class="col-auto">Your Pics</div>
+        <div class="col"><hr></div>
+    </div>
+
+    <div class="row gallery gallery-choice-type" data-type="{{ idType }}">
+        {% if pics is empty %}
+            {{ Theme.empty() }}
+        {% endif %}
+
+        {% for image in pics %}
+            {% include '@Backend/Forms/Partials/_image-gallery-type.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock body %}

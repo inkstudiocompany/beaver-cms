@@ -1,8 +1,8 @@
 {% block form_scripts %}
     <script type="text/javascript">
         $( document ).ready(function() {
-            console.log('esto funciona! :)');
             $('#{{ form.vars.id }}').validate();
+            $('button[data-action="gallery-type"]').galleryType();
         });
     </script>
 {% endblock form_scripts %}
@@ -10,7 +10,9 @@
 {{ form_start(form, { 'id': form.vars.id, 'attr': {'id': form.vars.id } }) }}
 {% for key, input in form.iterator %}
     {% if key != '_token' and key != 'cancel' and key != 'submit' %}
-        {% if input.vars.block_prefixes[1] != 'hidden'%}
+        {% if input.vars.block_prefixes[2] == 'gallery'%}
+            {% include '@Backend/Forms/Partials/_image-gallery.html.twig' with { 'input': input } %}
+        {% elseif input.vars.block_prefixes[1] != 'hidden'%}
             {% set class = 'form-control' %}
             {% if input.vars.block_prefixes[1] == 'text' %}
                 {% set class = 'editor' %}

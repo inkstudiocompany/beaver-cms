@@ -2,8 +2,8 @@ beaver.annotation:
     resource: '@BackendBundle/Controller'
     type: annotation
 
-backend.modules:
-    resource: 'routes/modules.yaml'
+content.routes:
+    resource: '@ContentBundle/Resources/config/routing.yml'
 
 logout:
     path: /logout
@@ -11,10 +11,6 @@ logout:
 backend.page:
     prefix: /ajax
     resource: 'routes/page.ajax.yml'
-
-backend.gallery:
-    prefix: /ajax
-    resource: 'routes/gallery.ajax.yml'
 
 backend.block:
     prefix: /ajax
