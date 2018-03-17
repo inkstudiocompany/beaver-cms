@@ -2,6 +2,13 @@ imports:
     - { resource: 'services/forms.yml' }
     - { resource: 'services/services.yml' }
 
+framework:
+    assets:
+        packages:
+            beaver:
+                version: 'vbeta-1.0.0'
+                version_format: '%%s?asset=%%s'
+
 services:
     _defaults:
         autowire: true
