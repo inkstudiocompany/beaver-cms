@@ -40,7 +40,7 @@ var required = [
  */
 var helpers = [
     '../src/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
-    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
+    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
 ];
 
 /**
@@ -50,7 +50,7 @@ var helpers = [
  */
 var app = [
     '../src/Beaver/BackendBundle/Resources/assets/js/App/*.js',
-    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/App/*.js',
+    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/App/*.js',
 ];
 
 /**
@@ -60,7 +60,7 @@ var app = [
  */
 var jqueryPlugins = [
     '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
-    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
+    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
 ];
 
 /**
@@ -70,7 +70,7 @@ var jqueryPlugins = [
  */
 var main = [
     '../src/Beaver/BackendBundle/Resources/assets/js/main.js',
-    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/main.js'
+    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/main.js'
 ];
 
 /**

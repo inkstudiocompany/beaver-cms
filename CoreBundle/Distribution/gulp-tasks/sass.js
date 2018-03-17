@@ -49,7 +49,7 @@ gulp.task('styles', ['third-party-styles'], (response) => {
     pump([
              gulp.src([
             '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
-            '../vendor/beaver/Beaver/BackendBundle/Resources/assets/scss/css.scss'
+            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/css.scss'
         ]),
              sass().on('error', sass.logError),
              concat('styles.css'),
@@ -64,7 +64,7 @@ gulp.task('styles', ['third-party-styles'], (response) => {
 gulp.task('login-styles', function () {
     return gulp.src([
         '../src/Beaver/BackendBundle/Resources/assets/scss/login.scss',
-        '../vendor/beaver/Beaver/BackendBundle/Resources/assets/scss/login.scss'
+        '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/login.scss'
     ])
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('login.css'))
@@ -78,7 +78,7 @@ gulp.task('login-styles', function () {
 gulp.task('modules-styles', function () {
     return gulp.src([
         '../src/Beaver/BackendBundle/Resources/assets/scss/modules/*.scss',
-        '../vendor/beaver/Beaver/BackendBundle/Resources/assets/scss/modules/*.scss'
+        '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/modules/*.scss'
     ])
         .pipe(sass().on('error', sass.logError))
         .pipe(uglifycss())
