@@ -49,7 +49,7 @@ gulp.task('styles', ['third-party-styles'], (response) => {
     pump([
              gulp.src([
             '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
-            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/css.scss'
+            '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/cms.scss'
         ]),
              sass().on('error', sass.logError),
              concat('styles.css'),
