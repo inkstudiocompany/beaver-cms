@@ -19,4 +19,3 @@ if ('dev' === options.env) {
 }
 
 gulp.task('default', ['beaver-script', 'backend-styles', 'backend-fonts']);
-

@@ -7,7 +7,9 @@
 /*
  * Dependencies
  */
-var gulp        = require('gulp');
+var gulp        = require('gulp'),
+    pump        = require('pump')
+;
 
 /**
  * Destino de los archivos.
@@ -26,18 +28,20 @@ var thirdParty = [
 /**
  * Copia las librerias de terceros.
  */
-gulp.task('third-party-fonts', function () {
-    return gulp.src(thirdParty)
-        .pipe(gulp.dest(dest))
-    ;
+gulp.task('third-party-fonts', () => {
+    gulp.src(thirdParty)
+    .pipe(gulp.dest(dest))
+;
 });
 
 /**
  * Compila los archivos de backend.
  */
-gulp.task('fonts', ['third-party-fonts'], function () {
-    return gulp.src([])
-        .pipe(gulp.dest(dest))
+gulp.task('fonts', ['third-party-fonts'], (response) => {
+    pump([
+             gulp.src([]),
+             gulp.dest(dest)
+         ], response);
 });
 
 gulp.task('backend-fonts', ['fonts']);

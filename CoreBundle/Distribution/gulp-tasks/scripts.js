@@ -40,7 +40,7 @@ var thirdParty = [
 gulp.task('third-party-scripts', function () {
     return gulp.src(thirdParty)
         .pipe(gulp.dest(dest))
-    ;
+        ;
 });
 
 /**
@@ -51,8 +51,8 @@ gulp.task('beaver-jquery-plugins', ['third-party-scripts'], function () {
         '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
         '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
     ])
-    .pipe(concat('jquery.beaver.min.js'))
-    .pipe(gulp.dest(dest));
+        .pipe(concat('jquery.beaver.min.js'))
+        .pipe(gulp.dest(dest));
 });
 
 /**
@@ -63,9 +63,9 @@ gulp.task('javascript', ['beaver-jquery-plugins'], function () {
         '../src/Beaver/BackendBundle/Resources/assets/js/*.js',
         '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/*.js'
     ])
-    .pipe(concat('backend.js'))
-    .pipe(gulp.dest(dest))
-    ;
+        .pipe(concat('backend.js'))
+        .pipe(gulp.dest(dest))
+        ;
 });
 
 gulp.task('backend-scripts', ['javascript']);

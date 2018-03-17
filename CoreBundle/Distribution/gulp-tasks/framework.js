@@ -6,6 +6,7 @@
  */
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
+    pump        = require('pump'),
     composer    = require('gulp-uglify/composer'),
     uglifyjs    = require('uglify-es')
 ;
@@ -39,7 +40,7 @@ var required = [
  */
 var helpers = [
     '../src/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
-    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/Helpers/*.js',
 ];
 
 /**
@@ -49,7 +50,7 @@ var helpers = [
  */
 var app = [
     '../src/Beaver/BackendBundle/Resources/assets/js/App/*.js',
-    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/App/*.js',
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/App/*.js',
 ];
 
 /**
@@ -59,7 +60,7 @@ var app = [
  */
 var jqueryPlugins = [
     '../src/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js',
-    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/jquery-plugins/*.js'
 ];
 
 /**
@@ -69,13 +70,13 @@ var jqueryPlugins = [
  */
 var main = [
     '../src/Beaver/BackendBundle/Resources/assets/js/main.js',
-    '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/js/main.js'
+    '../vendor/beaver/Beaver/BackendBundle/Resources/assets/js/main.js'
 ];
 
 /**
  * Compile files.
  */
-gulp.task('beaver-script', function () {
+gulp.task('beaver-script', (response) => {
     return gulp.src(required.concat(helpers).concat(jqueryPlugins).concat(app).concat(main))
         .pipe(concat('beaver.min.js'))
         .pipe(gulp.dest(dest))
