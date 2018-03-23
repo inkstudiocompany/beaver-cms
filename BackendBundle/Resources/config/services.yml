@@ -15,6 +15,19 @@ services:
         autoconfigure: true
         public: false
 
+    backend.user_provider:
+        class: Beaver\BackendBundle\Security\UserProvider
+        arguments: ['@doctrine.orm.entity_manager']
+
+    # authentication failure event listener
+    backend.authentication_failure_event_listener:
+        class: Beaver\BackendBundle\Listeners\AuthenticationListener
+        arguments:  ['@router', '@security.http_utils']
+
+    Beaver\BackendBundle\DataFixtures\ConfigurationFixture:
+        public: true
+        tags: ['doctrine.fixture.orm']
+
     Beaver\BackendBundle\Controller\SecurityController:
         public: true
         tags: ['controller.service_arguments']

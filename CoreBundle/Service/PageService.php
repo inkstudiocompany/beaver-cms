@@ -64,20 +64,21 @@ class PageService extends WebComponentAbstractService
      */
 	public function getPages()
     {
-        $pagesArrayResponse = new ArrayResponse();
-    
-        $pagesEntity = $this->entityManager->getRepository(PageEntity::class)->findAll();
-        if (!$pagesEntity) {
-            $pagesArrayResponse->setError('Paginas no encontradas');
-        }
-    
-        $pageResponse = new PageResponse();
-        foreach ($pagesEntity as $pageEntity) {
-            if (BaseResponse::SUCCESS === $pageResponse->setData($pageEntity)->isSuccess()) {
-                $pagesArrayResponse->addItem($pageResponse->getData());
-                $pageResponse->reset();
-            }
-        }
+    	$pagesArrayResponse = new ArrayResponse();
+    	
+    	try {
+		    $pagesEntity = $this->entityManager->getRepository(PageEntity::class)->findAll();
+		    
+		    $pageResponse = new PageResponse();
+		    foreach ($pagesEntity as $pageEntity) {
+			    if (BaseResponse::SUCCESS === $pageResponse->setData($pageEntity)->isSuccess()) {
+				    $pagesArrayResponse->addItem($pageResponse->getData());
+				    $pageResponse->reset();
+			    }
+		    }
+	    } catch (\Exception $exception) {
+    		$pagesArrayResponse->setError($exception->getMessage());
+	    }
     
         return $pagesArrayResponse;
     }

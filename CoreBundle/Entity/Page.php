@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping As ORM;
  * @package Beaver\CoreBundle\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="beaver_app_page")
+ * @ORM\Table(name="beaver_page")
  */
 class Page
 {

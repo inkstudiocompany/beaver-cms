@@ -29,6 +29,11 @@
             </tr>
         </thead>
         <tbody>
+        {% if pages is empty %}
+            <tr>
+                <td colspan="5">{{ Theme.empty() }}</td>
+            </tr>
+        {% endif %}
         {% for page in pages %}
             <tr>
                 <td>{{ page.id }}</td>

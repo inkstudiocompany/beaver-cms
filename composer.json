@@ -43,5 +43,8 @@
         "symfony/expression-language": "^4.0",
         "symfony/security-bundle": "^4.0",
         "phpixie/image": "^3.3"
+    },
+    "require-dev": {
+      "doctrine/doctrine-fixtures-bundle": "^3.0"
     }
 }

@@ -30,11 +30,7 @@ class BackendController extends ControllerBase
 	{
 	    $pagesResponse = $this->get('beaver.backend.page')->getPages();
 	    
-	    if (BaseResponse::FAIL === $pagesResponse->isSuccess()) {
-	        throw new \Exception($pagesResponse->getError());
-        }
-	    
-		return $this->render(
+	    return $this->render(
             '@Backend/Backend/pages-list.html.twig', [
 		    'pages' => $pagesResponse->getData()
         ]);

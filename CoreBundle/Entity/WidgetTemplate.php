@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping As ORM;
  * @package Beaver\CoreBundle\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="beaver_app_widget_template")
+ * @ORM\Table(name="beaver_widget_template")
  */
 class WidgetTemplate
 {
