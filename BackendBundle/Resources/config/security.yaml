@@ -5,7 +5,7 @@ security:
             id: backend.user_provider
 
     encoders:
-        Beaver\BackendBundle\Security\User: { algorithm: sha512, iterations: 1000, encode_as_base64: true }
+        Beaver\BackendBundle\Security\UserProvider: { algorithm: sha512, iterations: 1000, encode_as_base64: true }
 
     firewalls:
         dev:
@@ -41,5 +41,5 @@ security:
     access_control:
         # Agregar estas rutas al archivo de security
         - { path: ^/backend/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/backend/change_password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backend/password/restore, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend, roles: ROLE_ADMIN }

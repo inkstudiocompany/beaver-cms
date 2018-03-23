@@ -57,7 +57,7 @@ class AuthenticationListener implements AuthenticationFailureHandlerInterface
 		if (true === $exception->getPrevious() instanceof UsernameNotFoundException) {
 			if (UserProvider::INACTIVE === $exception->getPrevious()->getCode()) {
 				return new RedirectResponse(
-					$this->router->generate('login', ['username' => $request->get('_username')]));
+					$this->router->generate('beaver.backend.password.restore', ['username' => $request->get('_username')]));
 			}
 		}
 		

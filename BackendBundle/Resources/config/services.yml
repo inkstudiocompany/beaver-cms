@@ -13,11 +13,15 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        public: false
+        public: true
 
     backend.user_provider:
         class: Beaver\BackendBundle\Security\UserProvider
         arguments: ['@doctrine.orm.entity_manager']
+
+    beaver.backend.security:
+        class: Beaver\BackendBundle\Service\SecurityService
+        arguments: ['@doctrine.orm.entity_manager', '@security.encoder_factory']
 
     # authentication failure event listener
     backend.authentication_failure_event_listener:

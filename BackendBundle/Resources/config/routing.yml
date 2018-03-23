@@ -5,6 +5,9 @@ beaver.annotation:
 content.routes:
     resource: '@ContentBundle/Resources/config/routing.yml'
 
+beaver:security:
+    resource: '@BackendBundle/Resources/config/routes/security.yml'
+
 logout:
     path: /logout
 

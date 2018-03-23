@@ -1,0 +1,3 @@
+beaver.backend.password.restore:
+    path:     /password/restore/{username}
+    controller: Beaver\BackendBundle\Controller\SecurityController::recoverPassword
