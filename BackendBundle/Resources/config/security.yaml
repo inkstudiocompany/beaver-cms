@@ -5,7 +5,7 @@ security:
             id: backend.user_provider
 
     encoders:
-        Beaver\BackendBundle\Security\UserProvider: { algorithm: sha512, iterations: 1000, encode_as_base64: true }
+        Beaver\BackendBundle\Security\User: { algorithm: sha512, iterations: 1000, encode_as_base64: true }
 
     firewalls:
         dev:

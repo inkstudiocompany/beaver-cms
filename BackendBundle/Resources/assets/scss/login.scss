@@ -44,13 +44,13 @@ body {
 .form-label-group {
   position: relative;
 
-  input[type="text"].form-control {
+  input.form-control.first {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  input[type="password"].form-control {
+  input.form-control.second {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -74,6 +74,7 @@ body {
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
+  cursor: inherit;
 }
 
 .form-label-group input::-webkit-input-placeholder {

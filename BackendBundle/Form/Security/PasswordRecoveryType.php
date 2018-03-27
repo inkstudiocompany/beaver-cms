@@ -73,7 +73,7 @@ class PasswordRecoveryType extends AbstractType
 				]
 			])
 			->add('submit_button', SubmitType::class, [
-				'label'             => 'Enviar'
+				'label'             => 'Restaurar'
 			]);
 		;
 	}

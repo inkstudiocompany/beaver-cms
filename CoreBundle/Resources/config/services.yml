@@ -7,6 +7,11 @@ services:
         class: Beaver\CoreBundle\Command\InstallAssetsCommand
         tags: [console.command]
 
+    beaver.install.backend:
+        public: true
+        class: Beaver\CoreBundle\Command\InstallBackendCommand
+        tags: [console.command]
+
     beaver.core.context:
         public: true
         class: Beaver\CoreBundle\Service\ContextService

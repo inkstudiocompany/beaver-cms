@@ -89,7 +89,7 @@ class UserProvider implements UserProviderInterface
 	 */
 	public function refreshUser(UserInterface $user)
 	{
-		if (false === $user instanceof BackendUser) {
+		if (false === $user instanceof User) {
 			throw new UnsupportedUserException(
 				sprintf('Instances of "%s" are not supported.', get_class($user))
 			);
@@ -107,6 +107,6 @@ class UserProvider implements UserProviderInterface
 	 */
 	public function supportsClass($class)
 	{
-		return $class === 'Beaver\BackendBundle\Security\BackendUser';
+		return $class === User::class;
 	}
 }

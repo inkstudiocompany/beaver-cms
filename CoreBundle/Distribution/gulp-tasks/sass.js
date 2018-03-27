@@ -9,7 +9,6 @@
  */
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
-    pump        = require('pump'),
     uglifycss   = require('gulp-uglifycss'),
     sass        = require('gulp-sass')
 ;
@@ -36,26 +35,25 @@ var thirdParty = [
 /**
  * Copia las librerias de terceros.
  */
-gulp.task('third-party-styles', () => {
-    gulp.src(thirdParty)
-    .pipe(gulp.dest(dest))
-;
+gulp.task('third-party-styles', function () {
+    return gulp.src(thirdParty)
+        .pipe(gulp.dest(dest))
+    ;
 });
 
 /**
  * Compila los archivos de backend.
  */
-gulp.task('styles', ['third-party-styles'], (response) => {
-    pump([
-             gulp.src([
+gulp.task('styles', ['third-party-styles'], function () {
+    return gulp.src([
             '../src/Beaver/BackendBundle/Resources/assets/scss/cms.scss',
             '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/cms.scss'
-        ]),
-             sass().on('error', sass.logError),
-             concat('styles.css'),
-             uglifycss(),
-             gulp.dest(dest)
-         ], response);
+        ])
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('styles.css'))
+        .pipe(uglifycss())
+        .pipe(gulp.dest(dest))
+    ;
 });
 
 /**
@@ -66,10 +64,10 @@ gulp.task('login-styles', function () {
         '../src/Beaver/BackendBundle/Resources/assets/scss/login.scss',
         '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/login.scss'
     ])
-        .pipe(sass().on('error', sass.logError))
-        .pipe(concat('login.css'))
-        .pipe(uglifycss())
-        .pipe(gulp.dest(dest));
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('login.css'))
+    .pipe(uglifycss())
+    .pipe(gulp.dest(dest));
 });
 
 /**
@@ -80,9 +78,9 @@ gulp.task('modules-styles', function () {
         '../src/Beaver/BackendBundle/Resources/assets/scss/modules/*.scss',
         '../vendor/inkstudio/beaver/BackendBundle/Resources/assets/scss/modules/*.scss'
     ])
-        .pipe(sass().on('error', sass.logError))
-        .pipe(uglifycss())
-        .pipe(gulp.dest(dest));
+    .pipe(sass().on('error', sass.logError))
+    .pipe(uglifycss())
+    .pipe(gulp.dest(dest));
 });
 
 gulp.task('backend-styles', ['styles', 'login-styles', 'modules-styles']);

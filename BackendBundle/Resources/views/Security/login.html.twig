@@ -1,48 +1,35 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>Beaver CMS</title>
+{% extends '@Backend/Security/base.html.twig' %}
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/beaver/css/bootstrap.min.css', 'beaver') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/beaver/css/login.css', 'beaver') }}">
+{% block form %}
+    <form class="form-signin" action="{{ path('login') }}" method="post">
+        <div class="text-center mb-3">
+            <img class="mb-4" src="{{ asset('bundles/beaver/images/isotipo.png') }}" alt="" width="72" height="auto">
 
-        <!-- Javascripts -->
-        {% include '@Backend/Backend/Components/javascript.html.twig' %}
+            {% if error %}
+                <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+            {% endif %}
+        </div>
 
+        <div class="form-label-group">
+            <input type="text" id="username" name="_username" value="{{ last_username }}"
+                   placeholder="Nombre de usuario"
+                   class="form-control first"
+                   required autofocus
+            />
+            <label for="username">Nombre de usuario</label>
+        </div>
 
-    </head>
+        <div class="form-label-group">
+            <input type="password" id="password" name="_password" class="form-control second" placeholder="Password" required/>
+            <label for="password">Password</label>
+        </div>
 
-    <body>
-        <form class="form-signin" action="{{ path('login') }}" method="post">
-            <div class="text-center mb-3">
-                <img class="mb-4" src="http://127.0.0.1:8000/images/isotipo.png" alt="" width="72" height="auto">
-
-                {% if error %}
-                    <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
-                {% endif %}
-            </div>
-
-            <div class="form-label-group">
-                <input type="text" id="username" name="_username" value="{{ last_username }}"
-                       placeholder="Nombre de usuario"
-                       class="form-control"
-                       required autofocus
-                />
-                <label for="username">Nombre de usuario</label>
-            </div>
-
-            <div class="form-label-group">
-                <input type="password" id="password" name="_password" class="form-control" placeholder="Password" required/>
-                <label for="password">Password</label>
-            </div>
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
-        </form>
-    </body>
-</html>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+    </form>
+{% endblock form %}

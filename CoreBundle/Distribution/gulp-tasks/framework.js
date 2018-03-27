@@ -6,7 +6,6 @@
  */
 var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
-    pump        = require('pump'),
     composer    = require('gulp-uglify/composer'),
     uglifyjs    = require('uglify-es')
 ;
@@ -76,7 +75,7 @@ var main = [
 /**
  * Compile files.
  */
-gulp.task('beaver-script', (response) => {
+gulp.task('beaver-script', function () {
     return gulp.src(required.concat(helpers).concat(jqueryPlugins).concat(app).concat(main))
         .pipe(concat('beaver.min.js'))
         .pipe(gulp.dest(dest))

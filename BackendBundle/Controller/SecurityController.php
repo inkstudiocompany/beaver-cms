@@ -9,6 +9,7 @@ namespace Beaver\BackendBundle\Controller;
 
 use Beaver\BackendBundle\Form\Security\PasswordRecoveryType;
 use Beaver\CoreBundle\Response\BaseResponse;
+use Doctrine\ORM\Query\Expr\Base;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +51,7 @@ class SecurityController extends Controller
 		
 		$form->handleRequest($request);
 		
+		$error = false;
 		if (true === $form->isSubmitted() && true === $form->isValid()) {
 			$username = $form->get('username')->getData();
 			$password = $form->get('password')->getData();
@@ -62,11 +64,16 @@ class SecurityController extends Controller
 				
 				return $this->redirectToRoute('login');
 			}
+			
+			if (BaseResponse::FAIL === $response->isSuccess()) {
+				$error = $response->getError();
+			}
 		}
 		
 		return $this->render('@Backend/Security/recover_password.html.twig', [
 			'form'          => $form->createView(),
-			'username'      => $username
+			'username'      => $username,
+			'error'         => $error
 		]);
 	}
 }

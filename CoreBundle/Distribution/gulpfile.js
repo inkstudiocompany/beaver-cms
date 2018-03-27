@@ -18,4 +18,4 @@ requiredir('./gulp-tasks');
 if ('dev' === options.env) {
 }
 
-gulp.task('default', ['beaver-script', 'backend-styles', 'backend-fonts']);
+gulp.task('default', ['beaver-script', 'backend-styles', 'beaver-images']);

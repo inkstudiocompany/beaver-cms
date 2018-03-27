@@ -78,7 +78,7 @@ class User implements UserInterface, EquatableInterface
 	 */
 	public function isEqualTo(UserInterface $user)
 	{
-		if (!$user instanceof BackendUser) {
+		if (!$user instanceof User) {
 			return false;
 		}
 		
@@ -150,7 +150,7 @@ class User implements UserInterface, EquatableInterface
 	 */
 	public function getUsername()
 	{
-		// TODO: Implement getUsername() method.
+		return $this->username;
 	}
 	
 	/**

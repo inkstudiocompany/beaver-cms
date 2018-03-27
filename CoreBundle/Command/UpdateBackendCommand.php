@@ -20,7 +20,7 @@ use Symfony\Component\Process\Process;
  * Class InstallCommand
  * @package Beaver\CoreBundle\Command
  */
-class InstallAssetsCommand extends Command
+class UpdateBackendCommand extends Command
 {
 	private $src = ['src/', 'vendor/inkstudio/beaver/'];
 	private $temporal = './beaver-install/';
