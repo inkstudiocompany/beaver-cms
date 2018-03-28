@@ -9,6 +9,7 @@ namespace Beaver\CoreBundle\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Process\Process;
@@ -28,6 +29,7 @@ class InstallBackendCommand extends Command
         $this
             ->setName('beaver:install-backend')
             ->setDescription('Instala la base de datos y genera los datos base para su uso.')
+	        ->addOption('flush', true, InputOption::VALUE_OPTIONAL,'If their value is true, tables will be truncate.', false)
         ;
     }
 	
@@ -47,6 +49,14 @@ class InstallBackendCommand extends Command
 	
 	        $output->writeln('Step 2. Ejecutando migration.');
 	        $command = $this->getApplication()->find('doctrine:migrations:migrate');
+	        $command->run($input, $output);
+	
+	        $truncate = '';
+	        if (true === $input->getOption('flush')) {
+	            $truncate = ' --purge-with-truncate';
+	        }
+	        $output->writeln('Step 3. Copiando datos de configuración.');
+	        $command = $this->getApplication()->find('doctrine:fixture:load --purge-with-truncate');
 	        $command->run($input, $output);
 	
             $output->writeln('Instalación finalizada');
