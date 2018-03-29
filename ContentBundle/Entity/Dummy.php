@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping As ORM;
  * @package Beaver\ContentBundle\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="content_dummy")
+ * @ORM\Table(name="demo_content_dummy")
  */
 class Dummy extends AbstractContentEntity
 {

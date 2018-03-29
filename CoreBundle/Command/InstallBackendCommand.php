@@ -44,11 +44,11 @@ class InstallBackendCommand extends Command
         try {
             $output->writeln('Step 1. Generando diferencias en el schema.');
 	        
-	        $command = $this->getApplication()->find('doctrine:migrations:diff');
+	        $command = $this->getApplication()->find('doctrine:migrations:diff --configuration=./vendor/inkstudio/beaver/CoreBundle/Distribution/config/doctrine_migrations.yml --filter-expression "~^(beaver_)~"');
 	        $command->run($input, $output);
 	
 	        $output->writeln('Step 2. Ejecutando migration.');
-	        $command = $this->getApplication()->find('doctrine:migrations:migrate');
+	        $command = $this->getApplication()->find('doctrine:migrations:migrate --configuration=./vendor/inkstudio/beaver/CoreBundle/Distribution/config/doctrine_migrations.yml');
 	        $command->run($input, $output);
 	
 	        $truncate = '';

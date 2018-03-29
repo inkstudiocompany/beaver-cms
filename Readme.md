@@ -19,3 +19,12 @@ Notas de instalación.
 
 Son los templates de maquetado, en este caso Twig files, que definen la estructura.
 
+
+
+**Contents**
+
+Beaver CMS provide a easy interface to create custom contents in quckly way.
+
+For create a new content you need follow the next easy steps bellow:
+
+* 

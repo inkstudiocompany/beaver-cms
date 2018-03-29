@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping As ORM;
  * @package Beaver\ContentBundle\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="content_banner")
+ * @ORM\Table(name="demo_content_banner")
  */
 class Banner extends AbstractContentEntity
 {
