@@ -15,8 +15,6 @@
             <div class="col"><hr></div>
         </div>
 
-        {{ dump(input) }}
-
         {% if input.vars.value is not empty %}
             {% include '@Backend/Forms/Partials/_image-gallery-type.html.twig' with { 'image': input.vars.value } %}
         {% endif %}

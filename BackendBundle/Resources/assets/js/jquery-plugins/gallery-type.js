@@ -39,6 +39,8 @@
                     var $input  = $('#' + $(this).parents('.gallery').data('type'));
                     var $images = $('.gallery-selection[data-rel="' + $(this).parents('.gallery').data('type') + '"]');
 
+                    $.fn.galleryValidate($images);
+
                     $input.val('');
                     $images.find('[data-image="' + $(this).data('image') + '"]').remove();
 
@@ -56,7 +58,7 @@
          * @param $images
          */
         galleryValidate: function ($images) {
-            console.log($images.length);
+            console.log($images.find('.card').length);
         }
     });
 })(jQuery);
