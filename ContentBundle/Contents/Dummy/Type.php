@@ -34,7 +34,7 @@ class Type extends AbstractContentType
 	        ->add('image', GalleryType::class, [
 		        'label' => 'Esta es mi imagencita',
 		        'attr'  => [
-			        'data-size'    => '2',
+			        'data-size'    => '1',
 		        ]
 	        ])
             ->add('attribute', TextareaType::class, [

@@ -33,7 +33,8 @@ class GalleryController extends ControllerBase
 	{
 		return $this->render('@Backend/Forms/Modal/image-gallery.html.twig', [
 			'pics'      => $this->get('beaver.filesystem')->gallery()->getData(),
-			'idType'    => $request->get('idType', '')
+			'idType'    => $request->get('idType', ''),
+			'size'      => $request->get('size', 1)
 		]);
 	}
 	
