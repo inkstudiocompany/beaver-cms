@@ -1,4 +1,4 @@
 name: Beaver Backend Migrations
 migrations_namespace: App\Migrations\Beaver
 table_name: beaver_migration_versions
-migrations_directory: "vendor/inkstudio/beaver/CoreBundle/Distribution//Migrations"
+migrations_directory: "vendor/inkstudio/beaver/CoreBundle/Distribution/Migrations"

@@ -20,12 +20,16 @@
                             $images.each(function () {
                                $('.gallery-choice-type .card[data-image="'+$(this).data('image')+'"]').addClass('selected');
                             });
+                            $.fn.galleryValidate($images);
                             $('.card.image-type').toggleImage();
                         }
                     });
                 });
         },
 
+        /**
+         *
+         */
         toggleImage: function () {
             $(this)
                 .off('click')
@@ -45,6 +49,14 @@
                         $images.append($card);
                     }
                 });
+        },
+
+        /**
+         *
+         * @param $images
+         */
+        galleryValidate: function ($images) {
+            console.log($images.length);
         }
     });
 })(jQuery);
