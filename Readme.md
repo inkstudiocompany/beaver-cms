@@ -33,3 +33,8 @@ For create a new content you need follow the next easy steps bellow:
 
 We recomend define this directory there, src/Contents/{NAME_CONTENT}
 
+
+***GalleryType***
+
+Gallery is a own input type of Beaver Contents. It defines an image from the gallery, and gives user interface to select it.
+

@@ -24,7 +24,6 @@ class GalleryType extends AbstractType
 {
 	public function getParent()
 	{
-		return TextType::class;
 		return HiddenType::class;
 	}
 	

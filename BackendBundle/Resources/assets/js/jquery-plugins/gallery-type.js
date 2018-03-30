@@ -11,11 +11,11 @@
                 .on('click', function() {
                     var rel = $(this).data('rel');
                     _Modal.Open({
-                        inline: true,
-                        url: Routing.generate('beaver.gallery.type'),
-                        data: 'idType=' + rel,
-                        width: '90%',
-                        onOpen: function () {
+                        inline  : true,
+                        url     : Routing.generate('beaver.gallery.type'),
+                        data    : 'idType=' + rel,
+                        width   : '90%',
+                        onOpen  : function () {
                             var $images = $('.gallery-selection[data-rel="' + rel + '"] .card');
                             $images.each(function () {
                                $('.gallery-choice-type .card[data-image="'+$(this).data('image')+'"]').addClass('selected');
@@ -44,8 +44,6 @@
                         $card.find('[data-prefix="far"]').remove();
                         $images.append($card);
                     }
-
-                    console.log('ja!');
                 });
         }
     });

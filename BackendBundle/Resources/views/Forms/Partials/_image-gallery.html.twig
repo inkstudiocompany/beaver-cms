@@ -5,6 +5,16 @@
         <button type="button" class="btn btn-sm btn-outline-info" data-action="gallery-type" data-rel="{{ input.vars.id }}">Agregar Imagen</button>
     </div>
     <div class="gallery-selection" data-rel="{{ input.vars.id }}">
-        Aqui van las imagenes que vamos seleccionando.
+        <div class="row">
+            <div class="col"><hr></div>
+            <div class="col-auto">Selected Pics</div>
+            <div class="col"><hr></div>
+        </div>
+
+        {{ dump(input.vars.value) }}
+
+        {% if input.vars.value is not empty %}
+            {% include '@Backend/Forms/Partials/_image-gallery-type.html.twig' with { 'image': input.vars.value } %}
+        {% endif %}
     </div>
 </div>

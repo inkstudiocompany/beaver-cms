@@ -32,12 +32,14 @@ class Type extends AbstractContentType
         
         $builder
 	        ->add('image', GalleryType::class, [
-	        
+		        'label' => 'Esta es mi imagencita',
+		        'attr'  => [
+			        'data-size'    => '1',
+		        ]
 	        ])
             ->add('attribute', TextareaType::class, [
                 'label' => false,
                 'attr'  => [
-
                     'class' => 'editor'
                 ]
             ])

@@ -120,7 +120,7 @@ class ContentService
 
         $contentEntity = $contentManager->get(['id' => $id]);
 
-        if (!$content) {
+        if (!$contentEntity) {
             return $contentResponse->setError(Error::ITEM_NOT_FOUND_MESSAGE);
         }
 

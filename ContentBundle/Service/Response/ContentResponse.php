@@ -19,6 +19,11 @@ use Beaver\CoreBundle\Response\BaseResponse;
  */
 class ContentResponse extends BaseResponse
 {
+	/**
+	 * @param $data
+	 *
+	 * @return $this
+	 */
 	public function setData($data)
 	{
 		$dataContent = [];

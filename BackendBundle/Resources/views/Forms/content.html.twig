@@ -17,6 +17,7 @@
     {% if message is defined %}
         <label>{{ message }}</label>
     {% endif %}
+    {{ dump(form) }}
     {% embed '@Backend/Embed/form.html.twig' with { 'form' : form } %}{% endembed %}
 {% endblock form %}
 

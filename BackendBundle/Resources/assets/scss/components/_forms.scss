@@ -38,74 +38,59 @@
       {
         position: relative;
         float: left;
-        width: 30%;
+        width: 15%;
         font-weight: bolder;
       }
-        /*margin-bottom: 5px;
-        display: block;
-        overflow: auto;
 
-        label
-        {
-            position: relative;
-            float: left;
-            width: 30%;
-            font-weight: bolder;
-        }
+      .form-control {
+        width: 85%;
+      }
 
-        select,
-        input[type="text"]
-        {
-            height: 30px;
-            position: relative;
-            float: left;
-            width: 65%;
-            margin-left: 5%;
-        }
-
-        textarea.editor {
-            height: 250px !important;
-        } */
-
-        .ck-editor__editable {
-            min-height: 400px;
-            border: 1px solid $primaryColor;
-            box-shadow: none;
-            border-radius: 4px;
-            -webkit-border-radius: 4px;
-        }
-        .ck-editor__top .ck-sticky-panel .ck-toolbar {
-            border: none;
-            -webkit-border-radius: 4px;
-            border-radius: 4px;
-            background: #2d3436;
-            margin-bottom: 5px;
-        }
-        .ck-button{
-            -webkit-border-radius: 4px !important;
-            border-radius: 4px !important;
-            cursor: pointer;
-            color: $primaryColor;
-        }
+      .ck-editor__editable {
+          min-height: 400px;
+          border: 1px solid $primaryColor;
+          box-shadow: none;
+          border-radius: 4px;
+          -webkit-border-radius: 4px;
+      }
+      .ck-editor__top .ck-sticky-panel .ck-toolbar {
+          border: none;
+          -webkit-border-radius: 4px;
+          border-radius: 4px;
+          background: #2d3436;
+          margin-bottom: 5px;
+      }
+      .ck-button{
+          -webkit-border-radius: 4px !important;
+          border-radius: 4px !important;
+          cursor: pointer;
+          color: $primaryColor;
+      }
     }
 
-    /*
-    .button {
-        @include border-radius;
-        border: none;
-        padding: 5px 15px;
-        float: right;
-        margin-left: 5px;
-        color: $white-color;
-        background-color: $black-color;
+  .gallery-selection {
+    padding: 5px;
+    border: 1px solid $primaryContrastColor;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+    overflow: auto;
+    margin-bottom: 10px;
 
-        &.green {
-            background: $published-color;
-        }
-
-        &.red {
-            background: $unpublished-color;
-        }
+    [data-prefix="far"] {
+      display: none;
     }
-    */
+
+    .card {
+      width: auto;
+      height: 260px;
+      margin: 1%;
+      float: left;
+
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
 }

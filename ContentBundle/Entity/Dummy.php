@@ -17,6 +17,11 @@ class Dummy extends AbstractContentEntity
      * @ORM\Column(type="string", name="attribute")
      */
     private $attribute;
+	
+	/**
+	 * @ORM\Column(type="string", name="image")
+	 */
+	private $image;
 
     /**
      * @return mixed
@@ -25,13 +30,34 @@ class Dummy extends AbstractContentEntity
     {
         return $this->attribute;
     }
-
-    /**
-     * @param mixed $attribute
-     */
-    public function setAttribute($attribute)
+	
+	/**
+	 * @param mixed $attribute
+	 *
+	 * @return \Beaver\ContentBundle\Entity\Dummy
+	 */
+    public function setAttribute($attribute): self
     {
         $this->attribute = $attribute;
         return $this;
     }
+	
+	/**
+	 * @return mixed
+	 */
+	public function getImage()
+	{
+		return $this->image;
+	}
+	
+	/**
+	 * @param mixed $image
+	 *
+	 * @return \Beaver\ContentBundle\Entity\Dummy
+	 */
+	public function setImage($image): self
+	{
+		$this->image = $image;
+		return $this;
+	}
 }

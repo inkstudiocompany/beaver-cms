@@ -18,6 +18,8 @@ class ContentFactory
 		
 		$classCode = 'class ' . $className . ' extends Beaver\ContentBundle\Base\Contents\Content {';
 		
+		$toArrayMethod = 'return [';
+		
 		if (false === empty($properties)) {
 			foreach ($properties as $name => $value) {
 				$set = 'set'.ucfirst(strtolower($name));
@@ -25,12 +27,23 @@ class ContentFactory
 				
 				if (false === property_exists(Content::class, $name)) {
 					$classCode .= 'private $'.$name.';';
+				}
+				
+				if (false === method_exists(Content::class, $get)) {
 					$classCode .= 'public function ' . $get . '() { return $this->'.$name.'; }';
+				}
+				
+				if (false === method_exists(Content::class, $set)) {
 					$classCode .= 'public function ' . $set . '($'.$name.') { $this->'.$name.' = $'.$name.'; return $this; }';
 				}
+				
+				$toArrayMethod .= '"' . $name . '" => $this->' . $get . '(),';
 			}
 		}
 		
+		$toArrayMethod .= '];';
+		
+		$classCode .= 'public function toArray() { ' . $toArrayMethod . ' }';
 		$classCode .= '}';
 		
 		eval($classCode);
