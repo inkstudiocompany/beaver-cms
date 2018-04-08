@@ -28,7 +28,7 @@ class ContentController extends ControllerBase
 	    /** @var ArrayResponse $contentResponse */
 	    $contentResponse = $this->get('beaver.content')->getContentsByType($content);
 
-	    return $this->render('@Backend/Backend/content-list.html.twig', [
+	    return $this->render('@Backend/Panels/content-list.html.twig', [
 	        'content'   => $contentResponse->getData(),
             'type'      => $content
         ]);
@@ -38,6 +38,7 @@ class ContentController extends ControllerBase
 	 * @param Request $request
 	 *
 	 * @return Response
+	 * @throws \Exception
 	 */
 	public function new(Request $request)
     {

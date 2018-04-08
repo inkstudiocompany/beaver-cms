@@ -8,8 +8,19 @@
 
 namespace Beaver\ContentBundle\Base\Contents;
 
+/**
+ * Class ContentFactory
+ *
+ * @package Beaver\ContentBundle\Base\Contents
+ */
 class ContentFactory
 {
+	/**
+	 * @param $className
+	 * @param $properties
+	 *
+	 * @return mixed
+	 */
 	public static function newClass($className, $properties)
 	{
 		if (true === class_exists($className)) {

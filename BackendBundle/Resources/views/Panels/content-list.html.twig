@@ -33,7 +33,7 @@
                 {% for item in content %}
                     <tr>
                         <td>
-                            {{ dump(item) }}
+                            {{ item.contentName }}
                         </td>
                         <td>
                             {{ Components.isPublished(item) }}

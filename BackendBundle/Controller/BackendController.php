@@ -19,7 +19,7 @@ class BackendController extends ControllerBase
      */
 	public function index()
 	{
-	    return $this->render('@Backend/Backend/home.html.twig');
+	    return $this->render('@Backend/Panels/home.html.twig');
 	}
     
     /**

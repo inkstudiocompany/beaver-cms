@@ -10,6 +10,8 @@ namespace Beaver\ContentBundle\Service\Response;
 
 use Beaver\ContentBundle\Base\Contents\Content;
 use Beaver\ContentBundle\Base\Contents\ContentFactory;
+use Beaver\ContentBundle\Base\Entity\AbstractContentEntity;
+use Beaver\ContentBundle\Base\Entity\ContentEntityInterface;
 use Beaver\CoreBundle\Response\BaseResponse;
 
 /**
@@ -20,9 +22,10 @@ use Beaver\CoreBundle\Response\BaseResponse;
 class ContentResponse extends BaseResponse
 {
 	/**
-	 * @param $data
+	 * @param AbstractContentEntity $data
 	 *
 	 * @return $this
+	 * @throws \ReflectionException
 	 */
 	public function setData($data)
 	{
@@ -40,6 +43,8 @@ class ContentResponse extends BaseResponse
 		foreach ($dataContent as $name => $value) {
 			$content->{'set'.ucfirst(strtolower($name))}($value);
 		}
+		
+		$content->setContentName(strip_tags($data->getContentName()));
 		
 		$this->data = $content;
 		

@@ -34,10 +34,12 @@ abstract class AbstractContentEntity implements ContentEntityInterface
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     */
+	
+	/**
+	 * @param mixed $id
+	 *
+	 * @return $this
+	 */
     public function setId($id)
     {
         $this->id = $id;
@@ -79,4 +81,11 @@ abstract class AbstractContentEntity implements ContentEntityInterface
 		return (method_exists($this, $accessor) && is_callable(array($this, $accessor))) ?
 			$this->$accessor() : $this->$property;
 	}
+	
+	/**
+	 * String name for content list panel.
+	 *
+	 * @return string
+	 */
+	abstract public function getContentName(): string;
 }

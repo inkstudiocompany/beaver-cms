@@ -60,4 +60,14 @@ class Dummy extends AbstractContentEntity
 		$this->image = $image;
 		return $this;
 	}
+	
+	/**
+	 * String name for content list panel.
+	 *
+	 * @return string
+	 */
+	public function getContentName(): string
+	{
+		return $this->getAttribute();
+	}
 }
