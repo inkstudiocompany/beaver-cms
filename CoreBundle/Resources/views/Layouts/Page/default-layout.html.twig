@@ -5,7 +5,6 @@
 
 {% block body %}
     <div class="container">
-        {{ dump(page) }}
         {% for area in page.layout.areas %}
             <div id="{{ area.name }}" data-beaver="area" data-page="{{ page.id }}">
                 {% include '@Core/Components/blocks.html.twig' with { 'blocks' : area.blocks } %}
