@@ -12,6 +12,11 @@ services:
         class: Beaver\CoreBundle\Command\InstallBackendCommand
         tags: [console.command]
 
+    beaver.deploy:
+        public: true
+        class: Beaver\CoreBundle\Command\DeployCommand
+        tags: [console.command]
+
     beaver.core.context:
         public: true
         class: Beaver\CoreBundle\Service\ContextService

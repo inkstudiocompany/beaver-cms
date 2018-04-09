@@ -13,10 +13,7 @@
         {% if input.vars.block_prefixes[2] == 'gallery'%}
             {% include '@Backend/Forms/Partials/_image-gallery.html.twig' with { 'input': input } %}
         {% elseif input.vars.block_prefixes[1] != 'hidden'%}
-            {% set class = 'form-control' %}
-            {% if input.vars.block_prefixes[1] == 'text' %}
-                {% set class = 'editor' %}
-            {% endif %}
+
             <div class="form-group">
                 {{ form_label(input) }}
                 {{ form_widget(input, { 'attr': { 'class': class }}) }}
