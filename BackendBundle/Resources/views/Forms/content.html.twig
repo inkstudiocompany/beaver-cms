@@ -23,14 +23,16 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.1/classic/ckeditor.js"></script>
     <script>
         $(function () {
-            ClassicEditor
-                .create( document.querySelector( '.editor' ), {
-                    size: {width: '10%'},
-                    toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
-                })
-                .catch(error => {
-                    console.error( error );
+            $('.editor').each(function() {
+                ClassicEditor
+                    .create(this, {
+                        size: {width: '10%'},
+                        toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
+                    })
+                    .catch(function (error) {
+                    console.error(error);
                 });
+            });
         });
     </script>
 {% endblock custom_javascript %}

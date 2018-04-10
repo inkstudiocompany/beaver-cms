@@ -43,6 +43,12 @@ class Type extends AbstractContentType
                     'class' => 'editor'
                 ]
             ])
+	        ->add('description2', TextareaType::class, [
+		        'label' => false,
+		        'attr'  => [
+			        'class' => 'editor'
+		        ]
+	        ])
         ;
     }
 	
