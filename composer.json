@@ -1,6 +1,6 @@
 {
     "name": "inkstudio/beaver",
-    "version": "1.0.0",
+    "version": "1.2",
     "description": "My custom cms",
     "type": "symfony-bundle",
     "dist": {
