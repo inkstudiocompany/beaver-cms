@@ -19,7 +19,7 @@ class GalleryController extends ControllerBase
 	 */
 	public function gallery()
 	{
-		return $this->render('@Backend/Backend/gallery.html.twig', [
+		return $this->render('@Backend/Panels/gallery.html.twig', [
 			'pics' => $this->get('beaver.filesystem')->gallery()->getData()
 		]);
 	}

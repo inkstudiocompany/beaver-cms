@@ -16,7 +16,7 @@
 
             <div class="form-group">
                 {{ form_label(input) }}
-                {{ form_widget(input) }}
+                {{ form_widget(input, {'attr' : { 'class': 'form-control' }}) }}
                 {% if form.vars.errors is not empty %}
 
                 {% endif %}
