@@ -20,7 +20,7 @@ use Symfony\Component\Form\FormFactory;
 abstract class AbstractContentManager
 {
     /** @var ContentManagerInterface $manager */
-    protected static $manager = null;
+    private static $manager = null;
 
     /** @var  EntityManager */
     protected $entityManager;
@@ -32,6 +32,7 @@ abstract class AbstractContentManager
      */
     static public function manager()
     {
+	    return new static();
         if (!self::$manager) {
             self::$manager = new static();
         }
