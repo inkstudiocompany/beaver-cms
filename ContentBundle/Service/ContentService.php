@@ -87,10 +87,9 @@ class ContentService
 		    	foreach ($contentEntities as $contentEntity) {
 		    		/** @var BaseResponse $contentResponse */
 				    $contentResponse = $this->prepareResponse($contentResponse, $contentEntity);
-				    if (BaseResponse::SUCCESS === $contentResponse->isSuccess()) {
+				    if ($contentResponse && BaseResponse::SUCCESS === $contentResponse->isSuccess()) {
 				    	$searchResponse->addItem($contentResponse->getData());
 				    }
-				    $contentResponse->reset();
 			    }
 		    }
 	    } catch (Exception $exception) {
