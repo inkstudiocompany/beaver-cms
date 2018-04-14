@@ -16,7 +16,11 @@
 
             <div class="form-group">
                 {{ form_label(input) }}
-                {{ form_widget(input, {'attr' : { 'class': 'form-control' }}) }}
+                {% set class = '' %}
+                {% if input.vars.attr.class is defined %}
+                    {% set class = input.vars.attr.class %}
+                {% endif %}
+                {{ form_widget(input, {'attr' : { 'class': 'form-control ' ~ class }}) }}
                 {% if form.vars.errors is not empty %}
 
                 {% endif %}

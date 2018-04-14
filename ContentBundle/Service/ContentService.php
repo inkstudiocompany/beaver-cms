@@ -62,49 +62,94 @@ class ContentService
     {
         $contents = $this->getContents();
         if (false === isset($contents[$content])) {
-            throw new \Exception('Content Manager no encontrado.');
+            throw new \Exception('Content Manager no encontrado. Type ' . $content);
         }
         /** @var AbstractContentManager $contentManager */
         $contentManager = $contents[$content]::manager();
         return $contentManager->setServices($this->entityManager);
     }
-
-    public function search()
+	
+	/**
+	 * @param string $contentType
+	 * @param array  $parameters
+	 */
+    public function search($contentType, $parameters = [])
     {
-
+    	/** @var ArrayResponse $searchResponse */
+    	$searchResponse = new ArrayResponse();
+	    
+    	try {
+    		$contentManager     = $this->getContentManager($contentType);
+		    $contentEntities    = $contentManager->search($parameters);
+		    
+		    if ($contentEntities) {
+			    $contentResponse = $contentManager->getResponse();
+		    	foreach ($contentEntities as $contentEntity) {
+		    		/** @var BaseResponse $contentResponse */
+				    $contentResponse = $this->prepareResponse($contentResponse, $contentEntity);
+				    if (BaseResponse::SUCCESS === $contentResponse->isSuccess()) {
+				    	$searchResponse->addItem($contentResponse->getData());
+				    }
+				    $contentResponse->reset();
+			    }
+		    }
+	    } catch (Exception $exception) {
+		    $searchResponse->setError($exception->getMessage());
+	    }
+	   	return $searchResponse;
     }
 
     /**
-     * @param $content
+     * @param string $content
      * @return ArrayResponse
      */
-    public function getContentsByType($content)
+    public function getContentsByType(string $contentType)
     {
         $listResponse = new ArrayResponse();
 
         /** @var AbstractContentManager $contentManager */
-        $contentManager = $this->getContentManager($content);
+        $contentManager = $this->getContentManager($contentType);
 
         /** @var BaseResponse $contentResponse */
-        $contentResponse = $contentManager->getResponse();
         foreach ($contentManager->list() as $contentEntity)
         {
-	        if (BaseResponse::SUCCESS === $contentResponse->setData($contentEntity)->isSuccess()) {
-		        if (BackendBundle::BUNDLE !== $this->serviceContainer->get('beaver.core.context')->getBundle()) {
-			        if (Statutory::PUBLISHED === $contentResponse->getData()->isPublished()) {
-				        $listResponse->addItem($contentResponse->getData());
-			        }
-		        } elseif (BackendBundle::BUNDLE === $this->serviceContainer->get('beaver.core.context')->getBundle()) {
-			        $listResponse->addItem($contentResponse->getData());
-		        }
-		
-		        $contentResponse->reset();
+	        $contentResponse = $this->prepareResponse($contentManager->getResponse(), $contentEntity);
+	        if ($contentResponse) {
+		        $listResponse->addItem($contentResponse->getData());
 	        }
         }
 
         return $listResponse;
     }
-
+	
+	/**
+	 * @param $responseContainer
+	 * @param $contentEntity
+	 *
+	 * @return bool
+	 * @throws \Exception
+	 */
+	protected function prepareResponse($responseContainer, $contentEntity)
+	{
+		$response = false;
+		
+		try {
+			if (BaseResponse::SUCCESS === $responseContainer->setData($contentEntity)->isSuccess()) {
+				if (BackendBundle::BUNDLE !== $this->serviceContainer->get('beaver.core.context')->getBundle()) {
+					if (Statutory::PUBLISHED === $responseContainer->getData()->isPublished()) {
+						$response = $responseContainer;
+					}
+				} elseif (BackendBundle::BUNDLE === $this->serviceContainer->get('beaver.core.context')->getBundle()) {
+					$response = $responseContainer;
+				}
+			}
+		} catch (Exception $exception) {
+			throw $exception;
+		}
+		
+		return $response;
+	}
+	
     /**
      * @param $content
      * @param $id
@@ -134,7 +179,7 @@ class ContentService
     public function save(Form $form)
     {
         /** @var AbstractContentManager $contentManager */
-        $contentManager = $this->getContentManager($form->get('type')->getData());
+        $contentManager = $this->getContentManager($form->get('contentType')->getData());
 
         /** @var BaseResponse $contentResponse */
         $contentResponse = $contentManager->getResponse();

@@ -40,7 +40,7 @@ abstract class AbstractContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', HiddenType::class, [
+            ->add('contentType', HiddenType::class, [
                 'label' => false,
                 'data'  => strtolower($this->getType())
             ])
