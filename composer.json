@@ -4,8 +4,8 @@
     "description": "My custom cms",
     "type": "symfony-bundle",
     "dist": {
-        "url": "https://github.com/inkstudiocompany/beaver-cms.git",
-        "type": "git"
+        "url": "https://github.com/inkstudiocompany/beaver-cms/archive/master.zip",
+        "type": "zip"
     },
     "authors": [
         {
