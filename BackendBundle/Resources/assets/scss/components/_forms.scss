@@ -7,12 +7,16 @@
   .card.image-type {
     cursor: pointer;
 
-    [data-prefix="far"] {
+    [data-rel="checked"] {
       position: absolute;
       top: 5px;
       right: 5px;
       color: #2ecc71;
       visibility: hidden;
+    }
+
+    [data-rel="delete"] {
+      display: none;
     }
 
     &.selected {
@@ -77,8 +81,11 @@
     overflow: auto;
     margin-bottom: 10px;
 
-    [data-prefix="far"] {
+    [data-rel="checked"] {
       display: none;
+    }
+    [data-rel="delete"] {
+      cursor: pointer;
     }
 
     .card {

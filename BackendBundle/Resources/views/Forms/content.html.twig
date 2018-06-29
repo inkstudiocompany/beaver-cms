@@ -33,6 +33,8 @@
                     console.error(error);
                 });
             });
+
+            $('[data-rel="delete"]').off('click').on('click', $.fn.removeSelection);
         });
     </script>
 {% endblock custom_javascript %}

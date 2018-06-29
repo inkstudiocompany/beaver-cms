@@ -70,6 +70,15 @@
         },
 
         /**
+         * Debemos reescribir estos métodos para varias imágenes.
+         */
+        removeSelection: function () {
+            var $input  = $('#' + $(this).parents('.gallery-selection').data('rel'));
+            $input.val('');
+            $(this).parents('.card.image-type').remove();
+        },
+
+        /**
          *
          * @param $images
          */
