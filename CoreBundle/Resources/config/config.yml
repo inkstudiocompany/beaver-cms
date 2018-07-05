@@ -1,6 +1,6 @@
 imports:
-    - { resource: '@BeaverBackendBundle/Resources/config/services.yml' }
-    - { resource: '@BeaverCoreBundle/Resources/config/services.yml' }
+    - { resource: '@BackendBundle/Resources/config/services.yml' }
+    - { resource: '@CoreBundle/Resources/config/services.yml' }
 
 #beaver:
 #    layouts:  '%page.layouts%'
