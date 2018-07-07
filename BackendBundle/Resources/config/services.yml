@@ -6,7 +6,7 @@ framework:
     assets:
         packages:
             beaver:
-                version: 'vbeta-1.0.0'
+                version: 'vbeta-1.0.1'
                 version_format: '%%s?asset=%%s'
 
 services:
