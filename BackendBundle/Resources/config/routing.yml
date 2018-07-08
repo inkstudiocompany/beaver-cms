@@ -1,6 +1,6 @@
-beaver.annotation:
-    resource: '@BackendBundle/Controller'
-    type: annotation
+#beaver.annotation:
+#    resource: '@BackendBundle/Controller'
+#    type: annotation
 
 content.routes:
     resource: '@ContentBundle/Resources/config/routing.yml'
